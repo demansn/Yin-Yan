@@ -204,7 +204,8 @@ namespace Edelweiss.DecalSystem.Example {
 									// based on the surface you have hit.
 								NextUVRectangleIndex ();
 								check = false;
-								SetActiveOff();
+								//SetActiveOff();
+								cc.EndPause();
 
 							}
 						}
@@ -219,13 +220,18 @@ namespace Edelweiss.DecalSystem.Example {
 
 		public void OnCollisionEnter(Collision collision){
 			if(!check){
+
+
+
 				foreach (ContactPoint contact in collision.contacts) {
 					changePos = contact.point;								
 					check = true;
 
-					cc.Restart();
 				}
-				//Invoke("SetActiveOff", 0.05f);
+
+				cc.StartPause();
+
+
 			}
 		}
 	}

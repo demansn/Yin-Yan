@@ -23,14 +23,11 @@ public class collisionDetect : MonoBehaviour {
 		foreach (ContactPoint contact in collision.contacts) {
 			Debug.Log(contact.normal);
 
-			GameObject puk;
-
-			puk = Instantiate(mass, contact.point, Quaternion.FromToRotation(Vector3.up, contact.point)) as GameObject;
-
+			Instantiate(mass, contact.point, Quaternion.FromToRotation(Vector3.up, contact.point));
 
 		}
 
-		cc.Restart();
+//		cc.Restart();
 	}
 
 	public void BeginAgain(){

@@ -586,6 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redCircle: {fileID: 595738441}
   blueCircle: {fileID: 861677749}
+  pauseTime: .5
 --- !u!95 &1117981470
 Animator:
   serializedVersion: 2
