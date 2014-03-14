@@ -65,15 +65,17 @@ public class CharacterControll : MonoBehaviour
 		{
 				isPause = true;
 				
-				restart = true;
+				restart = false;
 				
 		}
 
 		public void EndPause ()
 		{
-				//isPause = false;
-				Debug.Log ("fsdf");
-				Invoke ("Resume", pauseTime);
+				isPause = false;				
+		}
+
+		public void Restart(){
+			Invoke ("EndPause", pauseTime);
 		}
 
 		public void Resume ()
