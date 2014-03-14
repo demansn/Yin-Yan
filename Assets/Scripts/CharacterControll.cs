@@ -74,14 +74,11 @@ public class CharacterControll : MonoBehaviour
 				isPause = false;				
 		}
 
-		public void Restart(){
-			Invoke ("EndPause", pauseTime);
-		}
-
 		public void Resume ()
 		{
-			isPause = false;
+				Invoke ("EndPause", pauseTime);
 		}
+	}
 
 
-}
+

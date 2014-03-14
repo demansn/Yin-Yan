@@ -230,7 +230,7 @@ namespace Edelweiss.DecalSystem.Example {
 					Debug.Log("11");
 				}
 
-				cc.Restart();
+
 
 			}
 		}
