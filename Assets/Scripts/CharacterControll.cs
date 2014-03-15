@@ -2,83 +2,87 @@
 using System.Collections;
 
 public class CharacterControll : MonoBehaviour
-{
-
-		private Vector3 moveDirection ;
-		private Vector3 moveBack;
-		private Vector3 rotation;
-		private Vector3 startRot;
-		private Vector3 startPos;
-		private float vertical = 0;
-		private float rotate = 0;
-		private bool isPause = false;
-		private bool restart = true;
-		private bool stopSpeed = true;
+{		
+		public bool isPause = false;
+		public bool isUpMove = false;
 		public GameObject redCircle;
 		public GameObject blueCircle;
-		public float pauseTime = 0;
-		// Use this for initialization
+		public float moveSpeed = 0;
+		public float rotateSpeed = 3.5f;
+		private float backwardMoveSpeed = 0;
+		private float backwardMoveTime = 0;
+		private Vector3 startPosition;
+		private Vector3 deltaPosition;
+		private Vector3 deltaRotation;
+		private Quaternion startRotation;
+		private bool isBackwardMove = false;
+	
 		void Start ()
 		{
-				startPos = transform.position;
+				startPosition = transform.position;
+				deltaRotation = new Vector3 (0, 0, rotateSpeed);
+				startRotation = Quaternion.Euler (0, 180, -720);
+		
+				if (isUpMove) {
+						deltaPosition = Vector3.up * moveSpeed;
+				} else {
+						deltaPosition = Vector3.down * moveSpeed;
+				}
+		}
+	
+		public void BackwardMove (float time)
+		{
+
+				backwardMoveTime = time;
+						
+				isBackwardMove = true;
+				redCircle.collider.enabled = false;
+				blueCircle.collider.enabled = false;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				Debug.Log (transform.rotation.ToString ());
 				if (!isPause) {
-						if (restart) {
-								vertical = 0.08f;
-								rotate = 3.5f;
-								moveDirection = new Vector3 (0, vertical, 0);
-								rotation = new Vector3 (0, 0, rotate);
+						if (isBackwardMove) {
 
-								transform.position += moveDirection;
-
-								if (Input.GetMouseButton (0)) {
-										transform.Rotate (rotation);
-								}
-								if (Input.GetMouseButton (1)) {
-										transform.Rotate (-rotation);		
-								}
-						} else {
-								if (transform.position.y > startPos.y) {
-										moveBack = new Vector3 (0, vertical * 5, 0);				
-										transform.position -= moveBack;
-										transform.Rotate (rotation * 2);
-										redCircle.collider.enabled = false;
-										blueCircle.collider.enabled = false;
-								} else {
-										restart = true;	
+								transform.position = Vector3.Lerp (transform.position, startPosition, Time.deltaTime * backwardMoveTime);
+								transform.rotation = Quaternion.Lerp (transform.rotation, startRotation, Time.deltaTime * backwardMoveTime);
+								
+								if (transform.position.y <= startPosition.y + 0.5) {
+										isBackwardMove = false;						
 										redCircle.collider.enabled = true;
 										blueCircle.collider.enabled = true;
-										stopSpeed = true;
+				
 										redCircle.SetActive (true);
 										blueCircle.SetActive (true);
+								} 
+				
+						} else {
+
+			
+								if (Input.GetMouseButton (0)) {
+										transform.Rotate (deltaRotation);
+								}
+								if (Input.GetMouseButton (1)) {
+										transform.Rotate (-deltaRotation);		
 								}
 
+								if (isUpMove) {
+										transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+								} else {
+										transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+								}
 						}
 				}
+		
 		}
 
-		public void StartPause ()
-		{
-				isPause = true;
-				
-				restart = false;
-				
-		}
 
-		public void EndPause ()
-		{
-				isPause = false;				
-		}
+		
 
-		public void Resume ()
-		{
-				Invoke ("EndPause", pauseTime);
-		}
-	}
+}
 
 
 
