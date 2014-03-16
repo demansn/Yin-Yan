@@ -8,10 +8,13 @@ public class MovementController : MonoBehaviour
 		public float moveSpeed = 0;
 		public bool isUpMove = false;
 		private float backwardMoveSpeed = 0;
+		private float backwardMoveTime;
 		private Vector3 startPosition;
 		private Vector3 deltaPosition;
+		private Vector3 backwardDeltaMove;
 		private bool isBackwardMove = false;
-		private float backwardMoveTime;
+		public bool isPause = false;
+
 		
 		void Start ()
 		{
@@ -28,28 +31,34 @@ public class MovementController : MonoBehaviour
 		{
 				isBackwardMove = true;
 				backwardMoveTime = time;
+				float distance = Vector3.Distance (transform.position, startPosition);
+				backwardDeltaMove = new Vector3 (0, distance / (backwardMoveTime / 0.02f), 0);
 		}
+
 	
-		// Update is called once per frame
+	void FixedUpdate(){
+		
+		if(!isPause && isBackwardMove){	
+			transform.position += backwardDeltaMove;
+		}
+		
+	}	
+
 		void Update ()
 		{
+				if (!isPause) {
+						if (isBackwardMove) {
+							
+								if (transform.position.y >= startPosition.y) {
+										isBackwardMove = false;
+								}
 
-				if (isBackwardMove) {
-
-						float newPosition = Mathf.MoveTowards (transform.position.y, startPosition.y, backwardMoveTime * Time.deltaTime);
-
-						//float newPosition = Mathf.SmoothDamp (transform.position.y, startPosition.y, ref backwardMoveTime, Time.deltaTime);
-						if (transform.position.y == startPosition.y) {
-								isBackwardMove = false;
 						} else {
-								transform.position = new Vector3 (transform.position.x, newPosition, transform.position.z);
-						}
-
-				} else {
-						if (isUpMove) {
-								transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-						} else {
-								transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+								if (isUpMove) {
+										transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+								} else {
+										transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+								}
 						}
 				}
 	

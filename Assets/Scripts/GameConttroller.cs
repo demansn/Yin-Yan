@@ -4,11 +4,30 @@ using System.Collections;
 public class GameConttroller : MonoBehaviour {
 
 	public CharacterControll characterControll;
-	public int mainCircle;
+	public float pauseTime = 1;
+	public float backwardMoveTime = 1;
+
+	public void StartMoveBackward(){
+		SetPauseMove (true);
+
+		Invoke ("MoveBackward", pauseTime);
+	}
+
+	public void SetPauseMove(bool isPause){
+
+		MovementController[] movementControllers = MonoBehaviour.FindObjectsOfType<MovementController> ();
+		
+		foreach (MovementController movementController in movementControllers) {			
+			
+			movementController.isPause = isPause;
+			
+		}
+		
+		characterControll.isPause = isPause;
+	}
 
 	public void MoveBackward(){
 
-		float backwardMoveTime = 3f;
 
 		MovementController[] movementControllers = MonoBehaviour.FindObjectsOfType<MovementController> ();
 		
@@ -19,6 +38,8 @@ public class GameConttroller : MonoBehaviour {
 		}
 
 		characterControll.BackwardMove (backwardMoveTime);
+
+		SetPauseMove (false);
 
 	}
 }
