@@ -8,7 +8,7 @@ public class CameraControll : MonoBehaviour {
 
 	private Vector3 moveCamera;
 
-	private bool startGame = false;
+	private bool startGame = true;
 	private bool callMenu = false;
 
 	void Start () {

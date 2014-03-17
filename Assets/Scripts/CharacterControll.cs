@@ -5,7 +5,7 @@ public class CharacterControll : MonoBehaviour
 
 {
 
-		private bool startGame = false;
+		private bool startGame = true;
 		public GUIText debugText;
 		public bool isPause = false;
 		public bool isUpMove = false;
@@ -73,8 +73,7 @@ public class CharacterControll : MonoBehaviour
 		void Update ()
 		{
 
-			if(!startGame){
-				
+			if(!startGame){				
 				transform.Rotate (speedRotation);
 			} else {
 				if (!isPause) {
@@ -104,13 +103,10 @@ public class CharacterControll : MonoBehaviour
 
 					if(v.x > 0.5f){
 						transform.Rotate (speedRotation);
-						debugText.text = "right";
 					} else {
 						transform.Rotate (-speedRotation);		
-						debugText.text = "left";
 					}
 				} else {
-					debugText.text = "button";
 					if (Input.GetMouseButton (0)) {
 						transform.Rotate (speedRotation);
 					}
