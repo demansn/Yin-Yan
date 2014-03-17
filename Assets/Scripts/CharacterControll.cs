@@ -2,94 +2,147 @@
 using System.Collections;
 
 public class CharacterControll : MonoBehaviour
+
 {
 
-		private Vector3 moveDirection ;
-		private Vector3 moveBack;
-		private Vector3 rotation;
-		private Vector3 startRot;
-		private Vector3 startPos;
-		private float vertical = 0;
-		private float rotate = 0;
-		private bool isPause = false;
-		private bool restart = true;
 		private bool startGame = false;
+		public GUIText debugText;
+		public bool isPause = false;
+		public bool isUpMove = false;
 		public GameObject redCircle;
 		public GameObject blueCircle;
-		public float pauseTime = 0;
-		// Use this for initialization
+		public float moveSpeed = 0;
+		public float rotateSpeed = 3.5f;
+		private float backwardMoveTime = 0;
+		private Vector3 startPosition;
+		private Vector3 deltaPosition;
+		private Vector3 backwardDeltaMove;
+		private Vector3 deltaRotation;
+		private Vector3 speedRotation;
+		private bool isBackwardMove = false;
+
 		void Start ()
 		{
-				startPos = transform.position;
+				startPosition = transform.position;
+				speedRotation = new Vector3 (0, 0, rotateSpeed);			
+		
+				if (isUpMove) {
+						deltaPosition = Vector3.up * moveSpeed;
+				} else {
+						deltaPosition = Vector3.down * moveSpeed;
+				}
+	
 		}
 	
-		// Update is called once per frame
-		void Update ()
+		public void BackwardMove (float time)
 		{
-			if(!startGame){
-				rotate = 3.5f;
-				rotation = new Vector3 (0, 0, rotate);
-				transform.Rotate (rotation);
-			} else {
-				if (!isPause) {
-						if (restart) {
-								vertical = 0.08f;
-								rotate = 3.5f;
-								moveDirection = new Vector3 (0, vertical, 0);
-								rotation = new Vector3 (0, 0, rotate);
+				backwardMoveTime = time;
 
-								transform.position += moveDirection;
-
-								if (Input.GetMouseButton (0)) {
-										transform.Rotate (rotation);
-								}
-								if (Input.GetMouseButton (1)) {
-										transform.Rotate (-rotation);		
-								}
-						} else {
-								if (transform.position.y > startPos.y) {
-										moveBack = new Vector3 (0, vertical * 5, 0);				
-										transform.position -= moveBack;
-										transform.Rotate (rotation * 2);
-										redCircle.collider.enabled = false;
-										blueCircle.collider.enabled = false;
-								} else {
-										restart = true;	
-										redCircle.collider.enabled = true;
-										blueCircle.collider.enabled = true;
-										redCircle.SetActive (true);
-										blueCircle.SetActive (true);
-								}
-
-						}
-				}
-			}
-		}
-
-		public void StartPause ()
-		{
-				isPause = true;
-				
-				restart = false;
-				
-		}
-
-		public void EndPause ()
-		{
-				isPause = false;				
-		}
-
-		public void Restart(){
-			Invoke ("EndPause", pauseTime);
-		}
-
-		public void Resume ()
-		{
-			isPause = false;
+		float angle = transform.eulerAngles.z + 180;
+		
+		if (angle < 360) {
+			angle = 360 - (angle - 360);
+		} else if(angle > 360){
+			angle = 360 - angle;
 		}
 		
+		angle = angle - 180;	
+		
+				deltaRotation = new  Vector3 (0, 0, angle   / (time  / 0.02f));
+
+			float distance = Vector3.Distance (transform.position, startPosition);
+				backwardDeltaMove = new Vector3 (0, distance / (backwardMoveTime / 0.02f), 0);
+		
+						
+				isBackwardMove = true;
+				redCircle.collider.enabled = false;
+				blueCircle.collider.enabled = false;
+		}
+
+
+
+	void FixedUpdate(){
+
+		if(!isPause && isBackwardMove){
+			transform.Rotate( deltaRotation);
+			transform.position -= backwardDeltaMove;
+		}
+
+	}
+
+		void Update ()
+		{
+
+			if(!startGame){
+				
+				transform.Rotate (speedRotation);
+			} else {
+				if (!isPause) {
+						if (isBackwardMove) {
+	
+								if (transform.position.y <= startPosition.y) {
+
+										isBackwardMove = false;	
+
+										redCircle.collider.enabled = true;
+										blueCircle.collider.enabled = true;
+
+										redCircle.SetActive (true);
+										blueCircle.SetActive (true);
+								} 
+				
+						} else {
+
+			
+								
+		
+				if (Input.touchCount > 0) {
+					Touch touch = Input.GetTouch(0);
+		
+					Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
+					 
+
+					if(v.x > 0.5f){
+						transform.Rotate (speedRotation);
+						debugText.text = "right";
+					} else {
+						transform.Rotate (-speedRotation);		
+						debugText.text = "left";
+					}
+				} else {
+					debugText.text = "button";
+					if (Input.GetMouseButton (0)) {
+						transform.Rotate (speedRotation);
+					}
+					if (Input.GetMouseButton (1)) {
+						transform.Rotate (-speedRotation);		
+					}
+				}
+				
+				if (isUpMove) {
+										transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+								} else {
+										transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+								}
+						}
+				}
+
+			}
+
+		
+
+		}
+
+	public void Resume ()
+	{
+		isPause = false;
+	}
+	
 	public void StartGame(){
 		startGame = true;
-	}	
-
+	}
 }
+
+	
+
+

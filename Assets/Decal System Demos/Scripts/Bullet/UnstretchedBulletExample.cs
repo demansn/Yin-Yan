@@ -210,7 +210,7 @@ namespace Edelweiss.DecalSystem.Example {
 								NextUVRectangleIndex ();
 								check = false;
 								//SetActiveOff();
-								cc.EndPause(); 
+								//cc.EndPause(); 
 								Debug.Log("22");
 
 							}
@@ -238,6 +238,7 @@ namespace Edelweiss.DecalSystem.Example {
 					cc.Restart();
 				}
 				//Invoke("SetActiveOff", 0.05f);
+
 			}
 		}
 }

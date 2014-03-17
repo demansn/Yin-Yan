@@ -18,7 +18,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &100002
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -57,13 +57,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.943509698, y: 3.50322914, z: 31.7958412}
+  m_LocalPosition: {x: -.94035095, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
 --- !u!4 &400002
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 8
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
@@ -79,7 +79,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .391944647, y: 17.3605614, z: -23.5982285}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -87,7 +87,7 @@ Transform:
   m_Father: {fileID: 0}
 --- !u!23 &2300000
 Renderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 8
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
@@ -108,7 +108,7 @@ Renderer:
   m_SortingLayerID: 0
 --- !u!33 &3300000
 MeshFilter:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 8
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
@@ -150,7 +150,7 @@ MonoBehaviour:
   terrainDensity: .5
 --- !u!114 &11400002
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 8
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}

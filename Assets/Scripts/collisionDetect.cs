@@ -9,10 +9,13 @@ namespace Edelweiss.DecalSystem.Example {
 	public class collisionDetect : MonoBehaviour {
 		private Vector3 viewPos;
 		private Vector3 changePos;
+		private GameObject collisionGameObject;
 		private bool check;
 		public GameObject particlePrefab;
 		private GameObject createdParticle;
 		public CharacterControll cc;
+		public GameConttroller gameController;
+
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
 		[SerializeField] private DS_Decals m_DecalsPrefab = null;
 		
@@ -154,8 +157,9 @@ namespace Edelweiss.DecalSystem.Example {
 							// based on the surface you have hit.
 							NextUVRectangleIndex ();
 
+							m_DecalsInstance.transform.parent = collisionGameObject.transform;
+
 							gameObject.SetActive(false);
-							cc.Resume(); 
 
 							check = false;
 							
@@ -174,14 +178,19 @@ namespace Edelweiss.DecalSystem.Example {
 					changePos = contact.point;								
 					check = true;				
 				}
-
+				collisionGameObject = collision.gameObject;
 				Vector3 goPos = collision.gameObject.transform.position;
+
 				viewPos = Camera.main.WorldToViewportPoint(goPos);
 
 				createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
 				Destroy(createdParticle, 5f);
 
-				cc.StartPause();
+			
+				viewPos = Camera.main.WorldToViewportPoint(goPos);	
+
+				gameController.StartMoveBackward();
+
 				
 			}
 		}
