@@ -240,5 +240,4 @@ namespace Edelweiss.DecalSystem.Example {
 				//Invoke("SetActiveOff", 0.05f);
 			}
 		}
-	}
 }

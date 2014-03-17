@@ -10,6 +10,8 @@ namespace Edelweiss.DecalSystem.Example {
 		private Vector3 viewPos;
 		private Vector3 changePos;
 		private bool check;
+		public GameObject particlePrefab;
+		private GameObject createdParticle;
 		public CharacterControll cc;
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
 		[SerializeField] private DS_Decals m_DecalsPrefab = null;
@@ -175,7 +177,10 @@ namespace Edelweiss.DecalSystem.Example {
 
 				Vector3 goPos = collision.gameObject.transform.position;
 				viewPos = Camera.main.WorldToViewportPoint(goPos);
-				                                           
+
+				createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
+				Destroy(createdParticle, 5f);
+
 				cc.StartPause();
 				
 			}
