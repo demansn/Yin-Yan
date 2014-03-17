@@ -239,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
   cc: {fileID: 1130629999}
+  gameController: {fileID: 0}
   m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
   m_MaximumNumberOfProjectors: 50
   m_DecalProjectorOffset: .5
@@ -362,6 +363,70 @@ Prefab:
       propertyPath: cc
       value: 
       objectReference: {fileID: 1130629999}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: camC
+      value: 
+      objectReference: {fileID: 1817981242}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_Normal.m_Background
+      value: 
+      objectReference: {fileID: 2800000, guid: d47ef90ee6e909e4889eaa9f4de61e66, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: choseLevelOne
+      value: 
+      objectReference: {fileID: 2800000, guid: 9380faae1fc285e4eb7caabc54171e95, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_Normal.m_TextColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_Normal.m_TextColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_Normal.m_TextColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_ContentOffset.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: customMenu.m_FontStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: chooseLevelOne
+      value: 
+      objectReference: {fileID: 2800000, guid: 9380faae1fc285e4eb7caabc54171e95, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: chooseLevelTwo
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cf8b379ce9ccb743a7eb71fd5f243f3, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: chooseLevelThree
+      value: 
+      objectReference: {fileID: 2800000, guid: 76bad841b8d92984c81548cf8d3fa3b4, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: chooseLevelFour
+      value: 
+      objectReference: {fileID: 2800000, guid: c75fdfd837813b243b56e22ff028a846, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: chooseLevelFive
+      value: 
+      objectReference: {fileID: 2800000, guid: 48a6dbb829b5bf94db5dc7f65e588e71, type: 3}
+    - target: {fileID: 11400002, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
+      propertyPath: chooseLevelSix
+      value: 
+      objectReference: {fileID: 2800000, guid: 6aa0a6a33dde538448f442cbd3eae14a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c68c54508ffbe4543b52a43e4901864e, type: 2}
   m_RootGameObject: {fileID: 1817981240}
@@ -451,9 +516,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df9d229c94beac4eaa1cb9b9a107b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
+  isPause: 0
+  isUpMove: 0
   redCircle: {fileID: 1861846150}
   blueCircle: {fileID: 177757892}
-  pauseTime: 0
+  moveSpeed: 0
+  rotateSpeed: 3.5
 --- !u!95 &1130630000
 Animator:
   serializedVersion: 2
@@ -632,7 +701,7 @@ GameObject:
   - 114: {fileID: 1817981242}
   - 114: {fileID: 1817981241}
   m_Layer: 0
-  m_Name: mainCamera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,15 +839,15 @@ MonoBehaviour:
     m_StretchHeight: 0
   cc: {fileID: 1130629999}
   camC: {fileID: 1817981242}
-  playButtonRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
   playButton: {fileID: 2800000, guid: 9ffc8576f40a2014ca4367b25b60083a, type: 3}
+  chooseLevelOne: {fileID: 2800000, guid: 9380faae1fc285e4eb7caabc54171e95, type: 3}
+  chooseLevelTwo: {fileID: 2800000, guid: 3cf8b379ce9ccb743a7eb71fd5f243f3, type: 3}
+  chooseLevelThree: {fileID: 2800000, guid: 76bad841b8d92984c81548cf8d3fa3b4, type: 3}
+  chooseLevelFour: {fileID: 2800000, guid: c75fdfd837813b243b56e22ff028a846, type: 3}
+  chooseLevelFive: {fileID: 2800000, guid: 48a6dbb829b5bf94db5dc7f65e588e71, type: 3}
+  chooseLevelSix: {fileID: 2800000, guid: 6aa0a6a33dde538448f442cbd3eae14a, type: 3}
   customMenu:
-    m_Name: Choose Level
+    m_Name: 
     m_Normal:
       m_Background: {fileID: 2800000, guid: d47ef90ee6e909e4889eaa9f4de61e66, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -824,18 +893,19 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 2
     m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 30, y: 0}
+    m_ContentOffset: {x: 40, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  scrollPosition: {x: 0, y: 0}
 --- !u!114 &1817981242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,6 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100000, guid: f5e2aea53a156304c9009c5beb1e3e17, type: 2}
   cc: {fileID: 1130629999}
+  gameController: {fileID: 0}
   m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
   m_MaximumNumberOfProjectors: 50
   m_DecalProjectorOffset: .5
