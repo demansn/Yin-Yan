@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CharacterControll : MonoBehaviour
 {		
+		public GUIText debugText;
 		public bool isPause = false;
 		public bool isUpMove = false;
 		public GameObject redCircle;
@@ -17,7 +18,6 @@ public class CharacterControll : MonoBehaviour
 		private Vector3 deltaRotation;
 		private Vector3 speedRotation;
 		private bool isBackwardMove = false;
-
 
 		void Start ()
 		{
@@ -34,7 +34,6 @@ public class CharacterControll : MonoBehaviour
 	
 		public void BackwardMove (float time)
 		{
-
 				backwardMoveTime = time;
 
 		float angle = transform.eulerAngles.z + 180;
@@ -56,7 +55,7 @@ public class CharacterControll : MonoBehaviour
 				isBackwardMove = true;
 				redCircle.collider.enabled = false;
 				blueCircle.collider.enabled = false;
-		}	
+		}
 
 
 
@@ -89,14 +88,32 @@ public class CharacterControll : MonoBehaviour
 						} else {
 
 			
-								if (Input.GetMouseButton (0)) {
-									transform.Rotate (speedRotation);
-								}
-								if (Input.GetMouseButton (1)) {
-									transform.Rotate (-speedRotation);		
-								}
+								
+		
+				if (Input.touchCount > 0) {
+					Touch touch = Input.GetTouch(0);
+		
+					Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
+					 
 
-								if (isUpMove) {
+					if(v.x > 0.5f){
+						transform.Rotate (speedRotation);
+						debugText.text = "right";
+					} else {
+						transform.Rotate (-speedRotation);		
+						debugText.text = "left";
+					}
+				} else {
+					debugText.text = "button";
+					if (Input.GetMouseButton (0)) {
+						transform.Rotate (speedRotation);
+					}
+					if (Input.GetMouseButton (1)) {
+						transform.Rotate (-speedRotation);		
+					}
+				}
+				
+				if (isUpMove) {
 										transform.position += Vector3.up * moveSpeed * Time.deltaTime;
 								} else {
 										transform.position += Vector3.down * moveSpeed * Time.deltaTime;
