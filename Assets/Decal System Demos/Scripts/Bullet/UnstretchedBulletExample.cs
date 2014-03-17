@@ -92,8 +92,10 @@ namespace Edelweiss.DecalSystem.Example {
 				}
 				m_DecalsInstance.UpdateDecalsMeshes (m_DecalsMesh);
 			}
+
 			
 			if (check) {
+				Debug.Log(check);
 				Ray l_Ray = Camera.main.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0.0f));
 				RaycastHit l_RaycastHit;
 				if (Physics.Raycast (l_Ray, out l_RaycastHit, Mathf.Infinity)) {
@@ -118,14 +120,14 @@ namespace Edelweiss.DecalSystem.Example {
 					Quaternion l_RandomRotation = Quaternion.Euler (0.0f, Random.Range (0.0f, 360.0f), 0.0f);
 					l_ProjectorRotation = l_ProjectorRotation * l_RandomRotation;
 					
-					TerrainCollider l_TerrainCollider = l_RaycastHit.collider as TerrainCollider;
+					/*TerrainCollider l_TerrainCollider = l_RaycastHit.collider as TerrainCollider;
 					if (l_TerrainCollider != null) {
 						
 							// Terrain collider hit.
 						
 						Terrain l_Terrain = l_TerrainCollider.GetComponent <Terrain> ();
 						if (l_Terrain != null) {
-							
+							Debug.Log("tttt");
 								// Create the decal projector with all the required information.
 							DecalProjector l_DecalProjector = new DecalProjector (l_ProjectorPosition, l_ProjectorRotation, m_DecalProjectorScale, m_CullingAngle, m_MeshOffset, m_UVRectangleIndex, m_UVRectangleIndex);
 
@@ -156,7 +158,7 @@ namespace Edelweiss.DecalSystem.Example {
 							Debug.LogError ("Terrain is null!");
 						}
 						
-					} else {
+					} else {*/
 						
 							// We hit a collider. Next we have to find the mesh that belongs to the collider.
 							// That step depends on how you set up your mesh filters and collider relative to
@@ -208,9 +210,11 @@ namespace Edelweiss.DecalSystem.Example {
 								NextUVRectangleIndex ();
 								check = false;
 								//SetActiveOff();
-							
+								cc.EndPause(); 
+								Debug.Log("22");
+
 							}
-						}
+						//}
 					}
 				}
 			}
@@ -221,10 +225,13 @@ namespace Edelweiss.DecalSystem.Example {
 		}
 
 		public void OnCollisionEnter(Collision collision){
+
 			if(!check){
 				foreach (ContactPoint contact in collision.contacts) {
 					changePos = contact.point;								
 					check = true;
+					Debug.Log("11");
+				}
 
 					createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
 					Destroy(createdParticle, 5f);
