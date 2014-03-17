@@ -235,7 +235,7 @@ namespace Edelweiss.DecalSystem.Example {
 
 					createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
 					Destroy(createdParticle, 5f);
-					cc.Restart();
+					
 				}
 				//Invoke("SetActiveOff", 0.05f);
 

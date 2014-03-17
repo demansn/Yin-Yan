@@ -6,6 +6,16 @@ public class GameConttroller : MonoBehaviour {
 	public CharacterControll characterControll;
 	public float pauseTime = 1;
 	public float backwardMoveTime = 1;
+	public bool isStartedGame = false;
+	public bool isPauseGame = false;
+
+	public void StartGame(){
+		isStartedGame = true;
+	}
+
+	public void SetPauseGame(bool isPause){
+		isPauseGame = isPause;
+	}
 
 	public void StartMoveBackward(){
 		SetPauseMove (true);
