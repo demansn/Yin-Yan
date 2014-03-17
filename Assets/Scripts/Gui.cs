@@ -14,9 +14,12 @@ public class Gui : MonoBehaviour {
 
 	private Rect upperTextRect;
 	private Rect mainMenuRect;
-	public Rect playButtonRect;
+	private Rect menuBgRect;
+	private Rect playButtonRect;
+	private Rect levelOneRect;
 
 	public Texture playButton;
+	public Texture choseLevelOne;
 
 	public GUIStyle customMenu;
 
@@ -27,6 +30,8 @@ public class Gui : MonoBehaviour {
 		upperTextRect = new Rect(Screen.width*5/100, Screen.height*5/100, Screen.width*95/100, Screen.height*40/100);
 		playButtonRect = new Rect(Screen.width*1.2f, Screen.height*1.45f, Screen.width*40/100, Screen.width*40/100);
 		mainMenuRect = new Rect(Screen.width*2, Screen.height/Screen.height, Screen.width*3, Screen.height*2);
+		menuBgRect = new Rect(Screen.width*2, Screen.height/Screen.height, Screen.width*3, Screen.height*2);
+
 		removeGui = true;
 	}
 
@@ -51,7 +56,6 @@ public class Gui : MonoBehaviour {
 		}
 
 		GUI.Box(mainMenuRect, "Chose Level", customMenu);
-
 	}
 
 }

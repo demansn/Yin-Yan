@@ -452,7 +452,7 @@ TrailRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5639e19ce91127445820f80f24ac9c2a, type: 2}
+  - {fileID: 2100000, guid: cc332ae7939970947af479204d117795, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -490,11 +490,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f96c026869debf4ebbf9c0790ed5450, type: 3}
+  m_Script: {fileID: 11500000, guid: fe1f7ae6343ec75438e33aa9026bf96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 100000, guid: f5e2aea53a156304c9009c5beb1e3e17, type: 2}
   cc: {fileID: 11400004}
-  m_DecalsPrefab: {fileID: 11400004, guid: fbb8db6a54b834f418d6c5be584913f3, type: 2}
+  m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
   m_MaximumNumberOfProjectors: 50
   m_DecalProjectorOffset: .5
   m_DecalProjectorScale: {x: 1, y: 2, z: 1}
@@ -508,9 +509,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f96c026869debf4ebbf9c0790ed5450, type: 3}
+  m_Script: {fileID: 11500000, guid: fe1f7ae6343ec75438e33aa9026bf96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
   cc: {fileID: 11400004}
   m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
   m_MaximumNumberOfProjectors: 50
@@ -531,6 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redCircle: {fileID: 100000}
   blueCircle: {fileID: 100002}
+  pauseTime: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

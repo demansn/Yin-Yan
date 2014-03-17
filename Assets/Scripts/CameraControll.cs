@@ -7,9 +7,8 @@ public class CameraControll : MonoBehaviour {
 	private Vector3 offset;
 
 	private Vector3 moveCamera;
-	private Vector3 stopMovement;
 
-	private bool startGame = true;
+	private bool startGame = false;
 	private bool callMenu = false;
 
 	void Start () {
@@ -24,7 +23,6 @@ public class CameraControll : MonoBehaviour {
 		}
 		if(callMenu){
 			moveCamera = new Vector3(0.1f, 0,0);
-			stopMovement = new Vector3();
 			transform.position +=  moveCamera;
 		}
 

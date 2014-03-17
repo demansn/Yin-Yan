@@ -13,7 +13,7 @@ public class CharacterControll : MonoBehaviour
 		private float rotate = 0;
 		private bool isPause = false;
 		private bool restart = true;
-		private bool stopSpeed = true;
+		private bool startGame = false;
 		public GameObject redCircle;
 		public GameObject blueCircle;
 		public float pauseTime = 0;
@@ -26,6 +26,11 @@ public class CharacterControll : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+			if(!startGame){
+				rotate = 3.5f;
+				rotation = new Vector3 (0, 0, rotate);
+				transform.Rotate (rotation);
+			} else {
 				if (!isPause) {
 						if (restart) {
 								vertical = 0.08f;
@@ -52,13 +57,13 @@ public class CharacterControll : MonoBehaviour
 										restart = true;	
 										redCircle.collider.enabled = true;
 										blueCircle.collider.enabled = true;
-										stopSpeed = true;
 										redCircle.SetActive (true);
 										blueCircle.SetActive (true);
 								}
 
 						}
 				}
+			}
 		}
 
 		public void StartPause ()
@@ -82,6 +87,9 @@ public class CharacterControll : MonoBehaviour
 		{
 			isPause = false;
 		}
-
+		
+	public void StartGame(){
+		startGame = true;
+	}	
 
 }
