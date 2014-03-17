@@ -14,6 +14,9 @@ namespace Edelweiss.DecalSystem.Example {
 
 	public class UnstretchedBulletExample : MonoBehaviour {
 
+		public GameObject particlePrefab;
+		private GameObject createdParticle;
+
 		private Vector3 changePos;
 		private bool check;
 		public CharacterControll cc;
@@ -204,8 +207,8 @@ namespace Edelweiss.DecalSystem.Example {
 									// based on the surface you have hit.
 								NextUVRectangleIndex ();
 								check = false;
-								SetActiveOff();
-
+								//SetActiveOff();
+							
 							}
 						}
 					}
@@ -223,6 +226,8 @@ namespace Edelweiss.DecalSystem.Example {
 					changePos = contact.point;								
 					check = true;
 
+					createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
+					Destroy(createdParticle, 5f);
 					cc.Restart();
 				}
 				//Invoke("SetActiveOff", 0.05f);

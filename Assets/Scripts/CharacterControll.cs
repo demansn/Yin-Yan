@@ -15,46 +15,54 @@ public class CharacterControll : MonoBehaviour {
 
 	private bool restart = true;
 	private bool stopSpeed = true;
+	private bool startGame = false;
 
 	public GameObject redCircle;
 	public GameObject blueCircle;
 	// Use this for initialization
 	void Start () {
 		startPos = transform.position;
+		startGame = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(restart){
-			vertical = 0.08f;
-			rotate = 3.5f;
-			moveDirection = new Vector3(0, vertical, 0);
+		if(!startGame){
+			rotate = 3f;
 			rotation = new Vector3(0,0,rotate);
-
-			transform.position += moveDirection;
-
-			if(Input.GetMouseButton(0)){
-				transform.Rotate(rotation);
-			}
-			if(Input.GetMouseButton(1)){
-				transform.Rotate(-rotation);		
-			}
+			transform.Rotate(-rotation);
 		} else {
-			if(transform.position.y > startPos.y){
-				moveBack = new Vector3(0, vertical*5, 0);				
-				transform.position -= moveBack;
-				transform.Rotate(rotation * 2);
-				redCircle.collider.enabled = false;
-				blueCircle.collider.enabled = false;
-			} else {
-				restart = true;	
-				redCircle.collider.enabled = true;
-				blueCircle.collider.enabled = true;
-				stopSpeed = true;
-				redCircle.SetActive(true);
-				blueCircle.SetActive(true);
-			}
+			if(restart){
+				vertical = 0.05f;
+				rotate = 3.8f;
+				moveDirection = new Vector3(0, vertical, 0);
+				rotation = new Vector3(0,0,rotate);
 
+				transform.position += moveDirection;
+
+				if(Input.GetMouseButton(0)){
+					transform.Rotate(rotation);
+				}
+				if(Input.GetMouseButton(1)){
+					transform.Rotate(-rotation);		
+				}
+			} else {
+				if(transform.position.y > startPos.y){
+					moveBack = new Vector3(0, vertical*5, 0);				
+					transform.position -= moveBack;
+					transform.Rotate(rotation * 2);
+					redCircle.collider.enabled = false;
+					blueCircle.collider.enabled = false;
+				} else {
+					restart = true;	
+					redCircle.collider.enabled = true;
+					blueCircle.collider.enabled = true;
+					stopSpeed = true;
+					redCircle.SetActive(true);
+					blueCircle.SetActive(true);
+				}
+
+			}
 		}
 	}
 
@@ -64,6 +72,10 @@ public class CharacterControll : MonoBehaviour {
 	}
 	public void StopGame(){
 		stopSpeed = false;
+	}
+
+	public void StartGame(){
+		startGame = true;
 	}
 
 }
