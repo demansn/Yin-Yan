@@ -8,7 +8,7 @@ public class Gui : MonoBehaviour {
 
 	private float levelButtonWidth;
 
-	private bool removeGui;
+	private bool removeGui = false;
 	private bool moveMenu = false;
 
 	public CharacterControll cc;
@@ -56,7 +56,7 @@ public class Gui : MonoBehaviour {
 		levelFiveRect = new Rect(scrollRect.width*18/100, scrollRect.height*15/100,levelButtonWidth,levelButtonWidth);
 		levelSixRect = new Rect(scrollRect.width*29/100, scrollRect.height*15/100,levelButtonWidth,levelButtonWidth);
 
-		removeGui = true;
+
 	}
 
 	void OnGUI(){
