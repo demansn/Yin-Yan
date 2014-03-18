@@ -2,30 +2,44 @@
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
-	private bool smoothTransform = false;
-	private Vector3 transformToCenter;
-	private Vector3 stopTransform;
+	private bool moveMenu = false;
+	private bool moveBack = false;
+	private Vector3 oldPosition;
+	private Vector3 menuTransform;
 
-	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(smoothTransform){
-			transformToCenter = new Vector3(0.01f,0,0);
+		oldPosition = transform.position;
+	}	
 
-			transform.position -= transformToCenter;
+	void Update () {
+
+		if(moveMenu){
+			menuTransform = new Vector3(0.1f,0,0);
+			transform.position -= menuTransform;
 		}
-		stopTransform = new Vector3(-10, 0,0);
-		if(transform.position.x < -10){
-			smoothTransform = false;
+
+		if(transform.position.x < 5.6f){
+			moveMenu = false;
 		}
+
+		if(moveBack){
+			menuTransform = new Vector3(0.1f,0,0);
+			transform.position += menuTransform;
+		}
+
+		if(transform.position.x > oldPosition.x){
+			moveBack = false;
+			transform.position = oldPosition;
+		}
+
 	}
 
 	public void MenuAtCenter(){
-		smoothTransform = true;
+		moveMenu = true;
+	}
+
+	public void MenuOut(){
+		moveBack = true;
 	}
 
 }

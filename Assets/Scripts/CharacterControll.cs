@@ -5,7 +5,7 @@ public class CharacterControll : MonoBehaviour
 
 {
 
-		private bool startGame = true;
+		private bool startGame = false;
 		public GUIText debugText;
 		public bool isPause = false;
 		public bool isUpMove = false;
@@ -30,7 +30,7 @@ public class CharacterControll : MonoBehaviour
 						deltaPosition = Vector3.up * moveSpeed;
 				} else {
 						deltaPosition = Vector3.down * moveSpeed;
-				}
+		}
 	
 		}
 	
