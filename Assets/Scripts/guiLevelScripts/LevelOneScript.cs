@@ -9,6 +9,7 @@ public class LevelOneScript : MonoBehaviour {
 	private bool isActive = false;
 	private bool blink = false;
 	private bool makeBigger = true;
+	public int id;
 
 	private MainMenu MM;
 	private CameraControll CamControll;
@@ -58,9 +59,9 @@ public class LevelOneScript : MonoBehaviour {
 	private void OnMouseUp(){
 		if(isActive){
 			transform.localScale = startScale;
+			MM.MenuOut();
+			CamControll.MoveBack();
 		}
-		MM.MenuOut();
-		CamControll.MoveBack();
 	}
 
 	public void SetActive(){
