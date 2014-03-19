@@ -87,13 +87,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  isMove: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3855be2deae156f4db4fb9472b518730, type: 3}
   m_Name: 
@@ -218,13 +219,13 @@ MonoBehaviour:
     m_StretchHeight: 0
   cc: {fileID: 0}
   camC: {fileID: 0}
-  playButtonRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
   playButton: {fileID: 2800000, guid: 9ffc8576f40a2014ca4367b25b60083a, type: 3}
+  chooseLevelOne: {fileID: 0}
+  chooseLevelTwo: {fileID: 0}
+  chooseLevelThree: {fileID: 0}
+  chooseLevelFour: {fileID: 0}
+  chooseLevelFive: {fileID: 0}
+  chooseLevelSix: {fileID: 0}
   customMenu:
     m_Name: 
     m_Normal:
@@ -284,6 +285,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  scrollPosition: {x: 0, y: 0}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

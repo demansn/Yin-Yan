@@ -37,7 +37,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: blueCircle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,6 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100000, guid: f5e2aea53a156304c9009c5beb1e3e17, type: 2}
   cc: {fileID: 11400004}
+  gameController: {fileID: 0}
   m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
   m_MaximumNumberOfProjectors: 50
   m_DecalProjectorOffset: .5
@@ -514,6 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
   cc: {fileID: 11400004}
+  gameController: {fileID: 0}
   m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
   m_MaximumNumberOfProjectors: 50
   m_DecalProjectorOffset: .5
@@ -531,9 +533,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df9d229c94beac4eaa1cb9b9a107b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
+  isPause: 0
+  isUpMove: 0
   redCircle: {fileID: 100000}
   blueCircle: {fileID: 100002}
-  pauseTime: 0
+  moveSpeed: 0
+  rotateSpeed: 3.5
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

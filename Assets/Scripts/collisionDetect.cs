@@ -13,8 +13,8 @@ namespace Edelweiss.DecalSystem.Example {
 		private bool check;
 		public GameObject particlePrefab;
 		private GameObject createdParticle;
-		public CharacterControll cc;
-		public GameConttroller gameController;
+		private CharacterControll cc;
+		private GameConttroller gameController;
 
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
 		[SerializeField] private DS_Decals m_DecalsPrefab = null;
@@ -72,6 +72,9 @@ namespace Edelweiss.DecalSystem.Example {
 				m_DecalsMeshCutter = new DecalsMeshCutter ();
 				m_WorldToDecalsMatrix = m_DecalsInstance.CachedTransform.worldToLocalMatrix;
 			}
+
+			gameController = GameObject.FindWithTag("GameController").GetComponent<GameConttroller>();
+			cc = GameObject.FindWithTag("Player").GetComponent<CharacterControll>();
 		}
 		
 		private void Update () {
