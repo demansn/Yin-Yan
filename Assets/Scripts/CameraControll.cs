@@ -6,26 +6,26 @@ public class CameraControll : MonoBehaviour {
 	public GameObject player;
 	private Vector3 offset;
 	private Vector3 oldPosition;
-
 	private Vector3 moveCamera;
 
-	private bool startGame = false;
+	public bool isMove = false;
+	private bool startGame = true;
 	private bool callMenu = false;
 	private bool moveBack = false;
-
-
 
 	void Start () {
 		offset = transform.position;
 		oldPosition = transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(startGame){
-			offset.y = player.transform.position.y + 3f;
+	}	
+
+	void LateUpdate () {
+
+		if(startGame && isMove){
+				
+			offset.y = player.transform.position.y + 3;
 			transform.position = offset;
 		}
+
 		if(callMenu){
 			moveCamera = new Vector3(0.1f, 0,0);
 			transform.position +=  moveCamera;
@@ -43,7 +43,11 @@ public class CameraControll : MonoBehaviour {
 		if(transform.position.x < oldPosition.x){
 			moveBack = false;
 		}
+	} 
 
+	public void ResetPosition(){
+		offset.y = 0;
+		transform.position = offset;
 	}
 
 	public void MoveToMenu(){
