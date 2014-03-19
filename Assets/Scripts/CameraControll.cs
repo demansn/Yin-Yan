@@ -10,15 +10,17 @@ public class CameraControll : MonoBehaviour {
 	public bool isMove = false;
 	private bool startGame = true;
 	private bool callMenu = false;
+	private float vel;
 
 	void Start () {
 		offset = transform.position;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+
+	void LateUpdate () {
 
 		if(startGame && isMove){
+				
 			offset.y = player.transform.position.y + 3;
 			transform.position = offset;
 		}

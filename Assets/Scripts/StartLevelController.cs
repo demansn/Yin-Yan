@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class StartLevelController : MonoBehaviour {
@@ -15,12 +15,15 @@ public class StartLevelController : MonoBehaviour {
 		gameController = GameObject.FindWithTag("GameController").GetComponent<GameConttroller>();
 	}
 
-	void OnTriggerEnter(Collider other){
-		if(other.tag == "Player" && cameraController && gameController){
-			cameraController.isMove = true;
-			gameController.StartMoveBlocks();		
-		}
-	
-	}
 
+	void OnTriggerStay(Collider other){
+
+		if(other.tag == "Player" && other.transform.position.y >= transform.position.y){
+
+			cameraController.isMove = true;
+			gameController.StartMoveBlocks();
+			Destroy(gameObject);	
+
+		}		
+	}
 }

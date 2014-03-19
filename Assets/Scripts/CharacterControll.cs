@@ -102,32 +102,29 @@ public class CharacterControll : MonoBehaviour
 										blueCircle.SetActive (true);
 								} 
 				
-						} else {
+						} else {								
+					
+							if (Input.touchCount > 0) {
+								Touch touch = Input.GetTouch(0);
+					
+								Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
+								 
 
-			
-								
-		
-				if (Input.touchCount > 0) {
-					Touch touch = Input.GetTouch(0);
-		
-					Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
-					 
-
-					if(v.x > 0.5f){
-						transform.Rotate (speedRotation);
-					} else {
-						transform.Rotate (-speedRotation);		
-					}
-				} else {
-					if (Input.GetMouseButton (0)) {
-						transform.Rotate (speedRotation);
-					}
-					if (Input.GetMouseButton (1)) {
-						transform.Rotate (-speedRotation);		
-					}
-				}
+								if(v.x > 0.5f){
+									transform.Rotate (speedRotation);
+								} else {
+									transform.Rotate (-speedRotation);		
+								}
+							} else {
+								if (Input.GetMouseButton (0)) {
+									transform.Rotate (speedRotation);
+								}
+								if (Input.GetMouseButton (1)) {
+									transform.Rotate (-speedRotation);		
+								}
+							}
 				
-							if (isUpMove) {
+								if (isUpMove) {
 									if(isAccelerated){
 										transform.position += Vector3.up * (moveSpeed + acceleration) * Time.deltaTime;
 									} else {
