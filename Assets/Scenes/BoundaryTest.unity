@@ -299,6 +299,10 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: acceleration
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
   m_RootGameObject: {fileID: 903615054}
@@ -315,7 +319,7 @@ GameObject:
   - 33: {fileID: 560472950}
   - 65: {fileID: 560472949}
   - 114: {fileID: 560472948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FinishLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +382,7 @@ GameObject:
   - 33: {fileID: 798115907}
   - 65: {fileID: 798115906}
   - 114: {fileID: 798115905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StartLevel
   m_TagString: Start
   m_Icon: {fileID: 0}
@@ -771,6 +775,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 903615054}
+    - target: {fileID: 11400000, guid: 01d531da1814aca4ca765a76c57757bd, type: 2}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 878878094}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01d531da1814aca4ca765a76c57757bd, type: 2}
   m_RootGameObject: {fileID: 1914925555}
@@ -825,9 +833,11 @@ MonoBehaviour:
   debugText: {fileID: 0}
   isPause: 0
   isUpMove: 1
+  isAccelerated: 0
   redCircle: {fileID: 1428241662}
   blueCircle: {fileID: 310741856}
   moveSpeed: 3
+  acceleration: 2
   rotateSpeed: 3.5
   startPosition: {x: 0, y: 0, z: 0}
 --- !u!95 &903615057
@@ -1059,7 +1069,7 @@ GameObject:
   - 114: {fileID: 1222890639}
   - 96: {fileID: 1222890644}
   - 120: {fileID: 1222890645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -1315,7 +1325,7 @@ GameObject:
   - 65: {fileID: 1363233979}
   - 114: {fileID: 1363233982}
   - 96: {fileID: 1363233983}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -1810,6 +1820,7 @@ MonoBehaviour:
   isStartedGame: 0
   isPauseGame: 0
   player: {fileID: 903615054}
+  cameraController: {fileID: 878878094}
 --- !u!4 &1914925557
 Transform:
   m_ObjectHideFlags: 0
