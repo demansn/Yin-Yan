@@ -25,4 +25,9 @@ public class StartButton : MonoBehaviour {
 		header.SetActive(false);
 	}
 
+	public void MakeActive(){
+		gameObject.SetActive(true);
+		header.SetActive(true);
+	}
+
 }
