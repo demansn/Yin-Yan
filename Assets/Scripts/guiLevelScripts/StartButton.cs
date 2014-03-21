@@ -2,15 +2,12 @@
 using System.Collections;
 
 public class StartButton : MonoBehaviour {
-
-	public CharacterControll cc;
-	public CameraControll camC;
-	public MainMenu MM;
-
-	public GameObject header;
+	private GameObject header;
+	private GuiController guiController;
 	// Use this for initialization
 	void Start () {
-	
+		guiController = MonoBehaviour.FindObjectOfType<GuiController>();
+		header = GameObject.FindGameObjectWithTag("HeaderText");
 	}
 	
 	// Update is called once per frame
@@ -19,8 +16,7 @@ public class StartButton : MonoBehaviour {
 	}
 
 	private void OnMouseUp(){
-		camC.MoveToMenu();
-		MM.MenuAtCenter();
+		guiController.ShowMainMenu();
 		gameObject.SetActive(false);
 		header.SetActive(false);
 	}

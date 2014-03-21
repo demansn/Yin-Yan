@@ -3,25 +3,18 @@ using System.Collections;
 
 public class BackButton : MonoBehaviour {
 
-	private StartButton SB;
-	private MainMenu MM;
-	private CameraControll CamControll;
+	private GuiController guiController;
 
 	private Vector3 startScale;
-
 	// Use this for initialization
 	void Start () {
-		SB = MonoBehaviour.FindObjectOfType<StartButton>();
-		MM = MonoBehaviour.FindObjectOfType<MainMenu>();
-		CamControll = MonoBehaviour.FindObjectOfType<CameraControll>();
-
+		guiController = MonoBehaviour.FindObjectOfType<GuiController>();
 		startScale = transform.localScale;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	private void OnMouseDown(){
@@ -30,9 +23,6 @@ public class BackButton : MonoBehaviour {
 
 	private void OnMouseUp(){
 		transform.localScale = startScale;
-		SB.MakeActive();
-		MM.MenuOut();
-		CamControll.MoveBack();
+		guiController.HideMainMenu();
 	}
-
 }
