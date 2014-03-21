@@ -17,6 +17,7 @@ public class GameConttroller : MonoBehaviour {
 	private AsyncOperation async;
 
 	void Start(){
+		
 
 	}
 
@@ -71,7 +72,6 @@ public class GameConttroller : MonoBehaviour {
 		Application.LoadLevelAdditive(currentLevelIndex);
 		characterControll.isAccelerated = true;
 		player.SetActive(true);
-
 
 	}
 
