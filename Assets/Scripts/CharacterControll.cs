@@ -5,8 +5,7 @@ public class CharacterControll : MonoBehaviour
 
 {
 
-		private bool startGame = false;
-		public GUIText debugText;
+		public bool isGameState = false;	
 		public bool isPause = false;
 		public bool isUpMove = false;
 		public bool isAccelerated = false;
@@ -23,54 +22,45 @@ public class CharacterControll : MonoBehaviour
 		private Vector3 speedRotation;
 		private bool isBackwardMove = false;
 
-		void Start ()
-		{
-				startPosition = transform.position;
-				speedRotation = new Vector3 (0, 0, rotateSpeed);			
-		
-				if (isUpMove) {
-						deltaPosition = Vector3.up * moveSpeed;
-				} else {
-						deltaPosition = Vector3.down * moveSpeed;
-		}
+		void Start (){
+
+			startPosition = transform.position;
+			speedRotation = new Vector3 (0, 0, rotateSpeed);			
 	
+			if (isUpMove) {
+					deltaPosition = Vector3.up * moveSpeed;
+			} else {
+					deltaPosition = Vector3.down * moveSpeed;
+			}	
 		}
 
 		public void ResetPosition(){
 			transform.position = startPosition;
 		}
-
-		public void AddSpeed(float speed){
-
-
-
-		}
 	
 		public void BackwardMove (float time)
 		{
-				backwardMoveTime = time;
+			backwardMoveTime = time;
 
-		float angle = transform.eulerAngles.z + 180;
+			float angle = transform.eulerAngles.z + 180;
 		
-		if (angle < 360) {
-			angle = 360 - (angle - 360);
-		} else if(angle > 360){
-			angle = 360 - angle;
-		}
+			if (angle < 360) {
+				angle = 360 - (angle - 360);
+			} else if(angle > 360){
+				angle = 360 - angle;
+			}
 		
-		angle = angle - 180;	
+			angle = angle - 180;	
 		
-				deltaRotation = new  Vector3 (0, 0, angle   / (time  / 0.02f));
+			deltaRotation = new  Vector3 (0, 0, angle   / (time  / 0.02f));
 
 			float distance = Vector3.Distance (transform.position, startPosition);
-				backwardDeltaMove = new Vector3 (0, distance / (backwardMoveTime / 0.02f), 0);
+			backwardDeltaMove = new Vector3 (0, distance / (backwardMoveTime / 0.02f), 0);
 		
-						
-				isBackwardMove = true;
-				redCircle.collider.enabled = false;
-				blueCircle.collider.enabled = false;
+			isBackwardMove = true;
+			redCircle.collider.enabled = false;
+			blueCircle.collider.enabled = false;
 		}
-
 
 
 	void FixedUpdate(){
@@ -82,74 +72,68 @@ public class CharacterControll : MonoBehaviour
 
 	}
 
-		void Update ()
-		{
+	void Update () {
+			
+		if(isGameState){
+			if (!isPause) {
+					if (isBackwardMove) {
 
-			if(!startGame){				
-				transform.Rotate (speedRotation);
-			} else {
-				if (!isPause) {
-						if (isBackwardMove) {
-	
-								if (transform.position.y <= startPosition.y) {
+							if (transform.position.y <= startPosition.y) {
 
-										isBackwardMove = false;	
+									isBackwardMove = false;	
 
-										redCircle.collider.enabled = true;
-										blueCircle.collider.enabled = true;
+									redCircle.collider.enabled = true;
+									blueCircle.collider.enabled = true;
 
-										redCircle.SetActive (true);
-										blueCircle.SetActive (true);
-								} 
+									redCircle.SetActive (true);
+									blueCircle.SetActive (true);
+							} 
+			
+					} else {								
 				
-						} else {								
-					
-							if (Input.touchCount > 0) {
-								Touch touch = Input.GetTouch(0);
-					
-								Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
-								 
+						if (Input.touchCount > 0) {
+							Touch touch = Input.GetTouch(0);
+				
+							Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
+							 
 
-								if(v.x > 0.5f){
-									transform.Rotate (speedRotation);
-								} else {
-									transform.Rotate (-speedRotation);		
-								}
+							if(v.x > 0.5f){
+								transform.Rotate (speedRotation);
 							} else {
-								if (Input.GetMouseButton (0)) {
-									transform.Rotate (speedRotation);
-								}
-								if (Input.GetMouseButton (1)) {
-									transform.Rotate (-speedRotation);		
-								}
+								transform.Rotate (-speedRotation);		
 							}
-				
-								if (isUpMove) {
-									if(isAccelerated){
-										transform.position += Vector3.up * (moveSpeed + acceleration) * Time.deltaTime;
-									} else {
-										transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-									}										
-								} else {
-										transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-								}
+						} else {
+							if (Input.GetMouseButton (0)) {
+								transform.Rotate (speedRotation);
+							}
+							if (Input.GetMouseButton (1)) {
+								transform.Rotate (-speedRotation);		
+							}
 						}
-				}
-
+			
+							if (isUpMove) {
+								if(isAccelerated){
+									transform.position += Vector3.up * (moveSpeed + acceleration) * Time.deltaTime;
+								} else {
+									transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+								}										
+							} else {
+									transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+							}
+					}
 			}
 
-		
+		} else {
+			transform.Rotate (speedRotation);
+		}		
 
-		}
+	}
 
 	public void Resume ()
 	{
 		isPause = false;
 	}
 	
-	public void StartGame(){
-		startGame = true;
-	}
 }
 
 	
