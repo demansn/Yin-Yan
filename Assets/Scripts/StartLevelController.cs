@@ -13,17 +13,35 @@ public class StartLevelController : MonoBehaviour {
 		}
 
 		gameController = GameObject.FindWithTag("GameController").GetComponent<GameConttroller>();
+		gameController.SetStart(gameObject);
+
 	}
 
 
 	void OnTriggerStay(Collider other){
 
-		if(other.tag == "Player" && other.transform.position.y >= transform.position.y){
+		if(other.tag == "Player"){
 
-			cameraController.isMove = true;
-			gameController.StartMoveBlocks();
-			Destroy(gameObject);	
+			if(gameController.isStartedGame){
+
+				if(other.transform.position.y >= transform.position.y){
+										
+					gameController.StartLevel();
+					Destroy(gameObject);	
+				}
+
+			} else {
+
+				if(other.transform.position.y <= transform.position.y){
+
+					gameController.StartLevel();
+					Destroy(gameObject);	
+				}
+
+			}
 
 		}		
 	}
+
+
 }

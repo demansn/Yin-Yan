@@ -16,9 +16,11 @@ public class StartButton : MonoBehaviour {
 	}
 
 	private void OnMouseUp(){
+
 		guiController.ShowMainMenu();
 		gameObject.SetActive(false);
 		header.SetActive(false);
+
 	}
 
 	public void MakeActive(){

@@ -13,21 +13,23 @@ public class LevelOneScript : MonoBehaviour {
 
 	private MainMenu MM;
 	private CameraControll CamControll;
+	private GameConttroller gameController;
 
-	// Use this for initialization
 	void Start () {
 		startScale = transform.localScale;
 
 		MM = MonoBehaviour.FindObjectOfType<MainMenu>();
 		CamControll = MonoBehaviour.FindObjectOfType<CameraControll>();
+		gameController = GameObject.FindWithTag("GameController").GetComponent<GameConttroller>();
 
 	}
 	
-	// Update is called once per frame
 	void Update () {
+
 		if(isActive){
 			renderer.material.color = new Color(2f,2f,2f);
 		}
+
 		if(blink){
 			maxScale = new Vector3(0.18f,0,0.18f);
 			minScale = new Vector3(0.12f,0,0.12f);
@@ -61,6 +63,7 @@ public class LevelOneScript : MonoBehaviour {
 			transform.localScale = startScale;
 			MM.MenuOut();
 			CamControll.MoveBack();
+			gameController.StartLoadLevel(id);
 		}
 	}
 

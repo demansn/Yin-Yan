@@ -21,24 +21,21 @@ public class GameConttroller : MonoBehaviour {
 
 	}
 
-	public void StartGame(){
+	public void StartLevel(){
+
 		isStartedGame = true;
+		cameraController.isMove = true;
+		StartMoveBlocks();
+	
 	}
 
 	public void SetStart(GameObject newStart){
 
-		if(start != null){
-			Destroy(start);
-			start = null;
-		}
+		
+		characterControll.startPosition = newStart.transform.position;
 
-		start = newStart;
-
-		if(start != null){
-
-			characterControll.startPosition = start.transform.position;
-
-		}
+		start = newStart;		
+	
 	
 	}
 
@@ -46,15 +43,19 @@ public class GameConttroller : MonoBehaviour {
 		isPauseGame = isPause;
 	}
 
+	public void StartLoadLevel(int levelIndex){
+
+		currentLevelIndex = levelIndex;
+
+		DestroyLevelObjects();		
+
+		Application.LoadLevelAdditive(levelIndex + 1);	
+		
+	}
+
 	void StartLoadNextLevel(){
 
-		GameObject[] gameObjects = FindGameObjectsWithLayer(GAME_OBJECT_LAYER_INDEX);
-		
-		foreach (GameObject go in gameObjects) {
-			
-			Destroy(go);
-			
-		}
+		DestroyLevelObjects();
 
 		player.SetActive(false);
 
@@ -67,17 +68,17 @@ public class GameConttroller : MonoBehaviour {
 		Invoke("LoadLevel", 1);
 	}
 
-	public void LoadLevel(){
+	void LoadLevel(){
 
 		Application.LoadLevelAdditive(currentLevelIndex);
-		characterControll.isAccelerated = true;
+		//characterControll.isAccelerated = true;
 		player.SetActive(true);
 
 	}
 
 	public void CurrentLevelFinished() {
 		cameraController.isMove = false;
-
+		characterControll.isAccelerated = true;
 		Invoke("StartLoadNextLevel", 2);
 		 
 	}
@@ -92,6 +93,8 @@ public class GameConttroller : MonoBehaviour {
 	}
 
 	public void StartMoveBlocks(){
+
+		Debug.Log("Call startMoveBlocks");
 
 		MovementController[] movementControllers = MonoBehaviour.FindObjectsOfType<MovementController> ();
 		
@@ -118,6 +121,8 @@ public class GameConttroller : MonoBehaviour {
 
 	public void MoveBackward(){
 
+		Debug.Log("call MoveBackward");
+
 
 		MovementController[] movementControllers = MonoBehaviour.FindObjectsOfType<MovementController> ();
 		
@@ -129,9 +134,23 @@ public class GameConttroller : MonoBehaviour {
 
 		characterControll.BackwardMove (backwardMoveTime);
 
+		if(!characterControll.isGameState){
+			characterControll.isGameState = true;	
+		}
+
 		SetPauseMove (false);
 
+	}
 
+	void DestroyLevelObjects(){
+
+		GameObject[] gameObjects = FindGameObjectsWithLayer(GAME_OBJECT_LAYER_INDEX);
+		
+		foreach (GameObject go in gameObjects) {
+			
+			Destroy(go);
+			
+		}
 	}
 
 	GameObject[] FindGameObjectsWithLayer(int layer){
@@ -148,10 +167,5 @@ public class GameConttroller : MonoBehaviour {
 
 		return goList.ToArray();
 
-	}
-
-	void Update(){
-		
-		
 	}
 }
