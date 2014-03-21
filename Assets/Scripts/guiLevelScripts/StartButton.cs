@@ -9,11 +9,12 @@ public class StartButton : MonoBehaviour {
 	public GameObject header;	
 
 	private void OnMouseUp(){
+		
 		camC.MoveToMenu();
 		MM.MenuAtCenter();
 		gameObject.SetActive(false);
 		header.SetActive(false);
-		Debug.Log("dsdf");
+	
 	}
 
 	public void MakeActive(){

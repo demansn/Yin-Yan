@@ -35,7 +35,9 @@ public class CharacterControll : MonoBehaviour
 		}
 
 		public void ResetPosition(){
-			transform.position = startPosition;
+
+			transform.position = new Vector3(transform.position.x, startPosition.y, transform.position.z);
+		
 		}
 	
 		public void BackwardMove (float time)
@@ -62,12 +64,30 @@ public class CharacterControll : MonoBehaviour
 			blueCircle.collider.enabled = false;
 		}
 
+	void OnMovedToStartPosition(){
+
+	}
+
 
 	void FixedUpdate(){
 
 		if(!isPause && isBackwardMove){
+
 			transform.Rotate(deltaRotation);
 			transform.position -= backwardDeltaMove;
+
+			if (transform.position.y <= startPosition.y) {
+
+				isBackwardMove = false;	
+
+				redCircle.collider.enabled = true;
+				blueCircle.collider.enabled = true;
+
+				redCircle.SetActive (true);
+				blueCircle.SetActive (true);
+
+				OnMovedToStartPosition();
+			} 
 		}
 
 	}
@@ -75,53 +95,37 @@ public class CharacterControll : MonoBehaviour
 	void Update () {
 			
 		if(isGameState){
-			if (!isPause) {
-					if (isBackwardMove) {
+			if (!isPause && !isBackwardMove) {										
+		
+				if (Input.touchCount > 0) {
+					Touch touch = Input.GetTouch(0);
+		
+					Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );					 
 
-							if (transform.position.y <= startPosition.y) {
-
-									isBackwardMove = false;	
-
-									redCircle.collider.enabled = true;
-									blueCircle.collider.enabled = true;
-
-									redCircle.SetActive (true);
-									blueCircle.SetActive (true);
-							} 
-			
-					} else {								
-				
-						if (Input.touchCount > 0) {
-							Touch touch = Input.GetTouch(0);
-				
-							Vector3 v = Camera.main.ScreenToViewportPoint(new Vector3 (touch.position.x,touch.position.y, 0) );
-							 
-
-							if(v.x > 0.5f){
-								transform.Rotate (speedRotation);
-							} else {
-								transform.Rotate (-speedRotation);		
-							}
-						} else {
-							if (Input.GetMouseButton (0)) {
-								transform.Rotate (speedRotation);
-							}
-							if (Input.GetMouseButton (1)) {
-								transform.Rotate (-speedRotation);		
-							}
-						}
-			
-							if (isUpMove) {
-								if(isAccelerated){
-									transform.position += Vector3.up * (moveSpeed + acceleration) * Time.deltaTime;
-								} else {
-									transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-								}										
-							} else {
-									transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-							}
+					if(v.x > 0.5f){
+						transform.Rotate (speedRotation);
+					} else {
+						transform.Rotate (-speedRotation);		
 					}
-			}
+				} else {
+					if (Input.GetMouseButton (0)) {
+						transform.Rotate (speedRotation);
+					}
+					if (Input.GetMouseButton (1)) {
+						transform.Rotate (-speedRotation);		
+					}
+				}
+	
+				if (isUpMove) {
+					if(isAccelerated){
+						transform.position += Vector3.up * (moveSpeed + acceleration) * Time.deltaTime;
+					} else {
+						transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+					}										
+				} else {
+						transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+				}
+			}			
 
 		} else {
 			transform.Rotate (speedRotation);
