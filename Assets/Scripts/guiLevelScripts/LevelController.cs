@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour {
 	void Start () {
 		ld = MonoBehaviour.FindObjectsOfType<LevelOneScript>();
 
-		for(int i =1; i<5; i++){
+		for(int i =1; i<7; i++){
 			UnlockButton(i);
 		}
 
