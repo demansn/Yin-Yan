@@ -5,15 +5,15 @@ public class MovementController : MonoBehaviour
 {
 
 		// Use this for initialization
-		public float moveSpeed = 0;
-		public bool isUpMove = false;
+	public float moveSpeed = 0;
+	public bool isUpMove = false;
 	public float backwardMoveSpeed = 0;
 	public float backwardMoveTime;
-		public Vector3 startPosition;
+	public Vector3 startPosition;
 	public Vector3 deltaPosition;
 	public Vector3 backwardDeltaMove;
-		public bool isBackwardMove = false;
-		public bool isPause = false;
+	public bool isBackwardMove = false;
+	public bool isPause = false;
 
 		
 		void Start ()
