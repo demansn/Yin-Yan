@@ -901,11 +901,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 310741857}
-<<<<<<< HEAD
   - {fileID: 327566251}
-=======
-  - {fileID: 2056908189}
->>>>>>> 2454b81121e852fe11c31e01261d2f161417864e
   - {fileID: 1428241663}
   m_Father: {fileID: 0}
 --- !u!114 &903615056
