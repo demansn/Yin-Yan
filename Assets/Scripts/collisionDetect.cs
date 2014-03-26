@@ -10,10 +10,9 @@ namespace Edelweiss.DecalSystem.Example {
 		private Vector3 viewPos;
 		private Vector3 changePos;
 		private GameObject collisionGameObject;
-		private bool check;
+		private bool hasCreateDecal = false;
 		public GameObject particlePrefab;
 		private GameObject createdParticle;
-		private CharacterControll cc;
 		private GameConttroller gameController;
 
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
@@ -57,15 +56,15 @@ namespace Edelweiss.DecalSystem.Example {
 		}
 		
 		private void Start () {
-			check = false;
+
 			gameController = GameObject.FindWithTag("GameController").GetComponent<GameConttroller>();
-			cc = GameObject.FindWithTag("Player").GetComponent<CharacterControll>();
+
 		}
 		
 		private void Update () {
 			
 			
-			if (check) {
+			if (hasCreateDecal) {
 
 				Ray l_Ray = Camera.main.ViewportPointToRay (viewPos);
 				RaycastHit l_RaycastHit;
@@ -149,9 +148,12 @@ namespace Edelweiss.DecalSystem.Example {
 
 							m_DecalsInstance.transform.parent = collisionGameObject.transform;
 
+							createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
+							Destroy(createdParticle, 5f);
+
 							gameObject.SetActive(false);
 
-							check = false;
+							hasCreateDecal = false;
 							
 						}
 
@@ -163,41 +165,30 @@ namespace Edelweiss.DecalSystem.Example {
 	
 		public void OnCollisionEnter(Collision collision){
 			
-			if(!check){
+			if(!hasCreateDecal){
+
 				foreach (ContactPoint contact in collision.contacts) {
 					changePos = contact.point;								
-					check = true;				
 				}
+
 				collisionGameObject = collision.gameObject;
-				Vector3 goPos = collision.gameObject.transform.position;
+				viewPos = Camera.main.WorldToViewportPoint(collision.gameObject.transform.position);	
 
-				viewPos = Camera.main.WorldToViewportPoint(goPos);
-
-				createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
-				Destroy(createdParticle, 5f);
-			
-				viewPos = Camera.main.WorldToViewportPoint(goPos);	
-
-				gameController.StartMoveBackward();
-
+				if(m_DecalsPrefab != null){
+					m_DecalsInstance = Instantiate (m_DecalsPrefab) as DS_Decals;
+				}
 				
-			}
-		}
+				if (m_DecalsInstance == null) {
+					Debug.LogError ("The decals prefab does not contain a DS_Decals instance!");
+				} else {
+					m_DecalsMesh = new DecalsMesh (m_DecalsInstance);
+					m_DecalsMeshCutter = new DecalsMeshCutter ();
+					m_WorldToDecalsMatrix = m_DecalsInstance.CachedTransform.worldToLocalMatrix;
+				}
 
-		public void CreateDecals(){
-			// Instantiate the prefab and get its decals instance.
-			if(m_DecalsPrefab != null){
-				m_DecalsInstance = Instantiate (m_DecalsPrefab) as DS_Decals;
-			}
-			if (m_DecalsInstance == null) {
-				Debug.LogError ("The decals prefab does not contain a DS_Decals instance!");
-			} else {
-				
-				// Create the decals mesh and the cutter that are needed to compute the projections.
-				// We also cache the world to decals matrix.
-				m_DecalsMesh = new DecalsMesh (m_DecalsInstance);
-				m_DecalsMeshCutter = new DecalsMeshCutter ();
-				m_WorldToDecalsMatrix = m_DecalsInstance.CachedTransform.worldToLocalMatrix;
+				gameController.StartMoveBackward();		
+
+				hasCreateDecal = true;
 			}
 		}
 	}

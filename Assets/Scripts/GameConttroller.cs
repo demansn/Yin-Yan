@@ -15,13 +15,6 @@ public class GameConttroller : MonoBehaviour {
 	private GameObject start;
 	private int currentLevelIndex = 0;
 	private AsyncOperation async;
-	private Edelweiss.DecalSystem.Example.collisionDetect collDetect;
-	private Edelweiss.DecalSystem.Example.collisionDetect2 collDetect2;
-
-	void Start(){
-		collDetect = MonoBehaviour.FindObjectOfType<Edelweiss.DecalSystem.Example.collisionDetect>();
-		collDetect2 = MonoBehaviour.FindObjectOfType<Edelweiss.DecalSystem.Example.collisionDetect2>();
-	}
 
 	public void StartLevel(){
 
@@ -51,10 +44,7 @@ public class GameConttroller : MonoBehaviour {
 
 		DestroyLevelObjects();		
 
-		Application.LoadLevelAdditive(levelIndex + 1);	
-
-		collDetect.CreateDecals();
-		collDetect2.CreateDecals();		
+		Application.LoadLevelAdditive(levelIndex + 1);		
 	}
 
 	void StartLoadNextLevel(){
@@ -77,8 +67,6 @@ public class GameConttroller : MonoBehaviour {
 		Application.LoadLevelAdditive(currentLevelIndex + 1);
 		//characterControll.isAccelerated = true;
 		player.SetActive(true);
-		collDetect.CreateDecals();
-		collDetect2.CreateDecals();
 	}
 
 	public void CurrentLevelFinished() {
