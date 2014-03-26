@@ -18,7 +18,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &100002
 GameObject:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -63,7 +63,7 @@ Transform:
   m_Father: {fileID: 400004}
 --- !u!4 &400002
 Transform:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
@@ -87,7 +87,7 @@ Transform:
   m_Father: {fileID: 0}
 --- !u!23 &2300000
 Renderer:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
@@ -108,11 +108,11 @@ Renderer:
   m_SortingLayerID: 0
 --- !u!33 &3300000
 MeshFilter:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Mesh: {fileID: 4300000, guid: 5bac27f8a1525044bab3280a716b6c76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d4c683ae1eb7d524497c5452e1991690, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +150,7 @@ MonoBehaviour:
   terrainDensity: .5
 --- !u!114 &11400002
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}

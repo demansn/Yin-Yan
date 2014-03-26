@@ -32,7 +32,7 @@ public class MovementController : MonoBehaviour
 				isBackwardMove = true;
 				backwardMoveTime = time;
 				float distance = Vector3.Distance (transform.position, startPosition);
-				backwardDeltaMove = new Vector3 (0, distance / (backwardMoveTime / 0.02f), 0);
+				backwardDeltaMove = new Vector3 (0, 0.1f, 0);
 			
 		}
 
@@ -52,6 +52,7 @@ public class MovementController : MonoBehaviour
 							
 								if (transform.localPosition.y >= startPosition.y) {
 										isBackwardMove = false;
+										transform.localPosition = startPosition;
 										Debug.Log(transform.position.y + " >= " + startPosition.y);
 								}
 

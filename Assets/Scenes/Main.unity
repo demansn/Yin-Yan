@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100000, guid: b2d30e47617bb2d49bd198437b50c073, type: 2}
   m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
-  m_MaximumNumberOfProjectors: 50
+  m_MaximumNumberOfProjectors: 10
   m_DecalProjectorOffset: .5
   m_DecalProjectorScale: {x: 1, y: 2, z: 1}
   m_CullingAngle: 80
@@ -315,7 +315,33 @@ Prefab:
       propertyPath: particlePrefab
       value: 
       objectReference: {fileID: 100000, guid: b2d30e47617bb2d49bd198437b50c073, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 11400002, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_MaximumNumberOfProjectors
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_MaximumNumberOfProjectors
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_DecalsPrefab
+      value: 
+      objectReference: {fileID: 11400004, guid: fbb8db6a54b834f418d6c5be584913f3,
+        type: 2}
+    - target: {fileID: 9600000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_MinVertexDistance
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 9600002, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_MinVertexDistance
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 9600002, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Autodestruct
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
   m_RootGameObject: {fileID: 903615054}
   m_IsPrefabParent: 0
@@ -1242,22 +1268,21 @@ Transform:
 --- !u!114 &1428241664
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 9970b6cd35d7ec4419af51ea0a3b8255,
-    type: 2}
-  m_PrefabInternal: {fileID: 411049836}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1428241662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1f7ae6343ec75438e33aa9026bf96c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6861b6175c3d8a44b1b90edfc655800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
   m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
-  m_MaximumNumberOfProjectors: 50
+  m_MaximumNumberOfProjectors: 10
   m_DecalProjectorOffset: .5
   m_DecalProjectorScale: {x: 1, y: 2, z: 1}
   m_CullingAngle: 80
-  m_MeshOffset: 0
+  m_MeshOffset: 2
 --- !u!54 &1428241665
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1937,7 +1962,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 16640711
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!95 &1858203756
 Animator:
@@ -2164,7 +2189,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 436071111
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!95 &2069337754
 Animator:

@@ -1,12 +1,11 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Edelweiss.DecalSystem;
 
 namespace Edelweiss.DecalSystem.Example {
 	
-	public class collisionDetect : MonoBehaviour {
+	public class collisionDetect2 : MonoBehaviour {
 		private Vector3 viewPos;
 		private Vector3 changePos;
 		private GameObject collisionGameObject;
@@ -15,7 +14,7 @@ namespace Edelweiss.DecalSystem.Example {
 		private GameObject createdParticle;
 		private CharacterControll cc;
 		private GameConttroller gameController;
-
+		
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
 		[SerializeField] private DS_Decals m_DecalsPrefab = null;
 		
@@ -66,16 +65,16 @@ namespace Edelweiss.DecalSystem.Example {
 			
 			
 			if (check) {
-
+				
 				Ray l_Ray = Camera.main.ViewportPointToRay (viewPos);
 				RaycastHit l_RaycastHit;
-
-
-				if (Physics.Raycast (l_Ray, out l_RaycastHit, Mathf.Infinity)) {
-		
-					// Collider hit.
 				
-	
+				
+				if (Physics.Raycast (l_Ray, out l_RaycastHit, Mathf.Infinity)) {
+					
+					// Collider hit.
+					
+					
 					// Make sures there are not too many projectors.
 					if (m_DecalProjectors.Count >= m_MaximumNumberOfProjectors) {
 						
@@ -96,7 +95,7 @@ namespace Edelweiss.DecalSystem.Example {
 					Quaternion l_RandomRotation = Quaternion.Euler (0.0f, Random.Range (0.0f, 360.0f), 0.0f);
 					l_ProjectorRotation = l_ProjectorRotation * l_RandomRotation;
 					
-				
+					
 					
 					// We hit a collider. Next we have to find the mesh that belongs to the collider.
 					// That step depends on how you set up your mesh filters and collider relative to
@@ -146,21 +145,21 @@ namespace Edelweiss.DecalSystem.Example {
 							// For the next hit, use a new uv rectangle. Usually, you would select the uv rectangle
 							// based on the surface you have hit.
 							NextUVRectangleIndex ();
-
+							
 							m_DecalsInstance.transform.parent = collisionGameObject.transform;
-
+							
 							gameObject.SetActive(false);
-
+							
 							check = false;
 							
 						}
-
+						
 					}
 				}
 			}
 		}
 		
-	
+		
 		public void OnCollisionEnter(Collision collision){
 			
 			if(!check){
@@ -170,20 +169,20 @@ namespace Edelweiss.DecalSystem.Example {
 				}
 				collisionGameObject = collision.gameObject;
 				Vector3 goPos = collision.gameObject.transform.position;
-
+				
 				viewPos = Camera.main.WorldToViewportPoint(goPos);
-
+				
 				createdParticle = Instantiate(particlePrefab, changePos, transform.rotation) as GameObject;
 				Destroy(createdParticle, 5f);
-			
+				
 				viewPos = Camera.main.WorldToViewportPoint(goPos);	
-
+				
 				gameController.StartMoveBackward();
-
+				
 				
 			}
 		}
-
+		
 		public void CreateDecals(){
 			// Instantiate the prefab and get its decals instance.
 			if(m_DecalsPrefab != null){
