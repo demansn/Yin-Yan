@@ -11,17 +11,11 @@ public class LevelOneScript : MonoBehaviour {
 	private bool makeBigger = true;
 	public int id;
 
-	private MainMenu MM;
-	private CameraControll CamControll;
-	private GameConttroller gameController;
+	private GuiController guiController;
 
 	void Start () {
 		startScale = transform.localScale;
-
-		MM = MonoBehaviour.FindObjectOfType<MainMenu>();
-		CamControll = MonoBehaviour.FindObjectOfType<CameraControll>();
-		gameController = GameObject.FindWithTag("GameController").GetComponent<GameConttroller>();
-
+		guiController = MonoBehaviour.FindObjectOfType<GuiController>();
 	}
 	
 	void Update () {
@@ -61,9 +55,7 @@ public class LevelOneScript : MonoBehaviour {
 	private void OnMouseUp(){
 		if(isActive){
 			transform.localScale = startScale;
-			MM.MenuOut();
-			CamControll.MoveBack();
-			gameController.StartLoadLevel(id);
+			guiController.StartGame(id);
 		}
 	}
 

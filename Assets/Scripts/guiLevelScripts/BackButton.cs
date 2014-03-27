@@ -4,6 +4,7 @@ using System.Collections;
 public class BackButton : MonoBehaviour {
 
 	private GuiController guiController;
+	public bool firstStart = false;
 
 	private Vector3 startScale;
 	// Use this for initialization
@@ -23,6 +24,10 @@ public class BackButton : MonoBehaviour {
 
 	private void OnMouseUp(){
 		transform.localScale = startScale;
-		guiController.HideMainMenu();
-	}
+		if(firstStart){
+			guiController.ResumeGame();
+		} else {
+			guiController.HideMainMenu();
+		}
+	}	
 }

@@ -17,10 +17,12 @@ public class GameConttroller : MonoBehaviour {
 	private AsyncOperation async;
 	private Edelweiss.DecalSystem.Example.collisionDetect collDetect;
 	private Edelweiss.DecalSystem.Example.collisionDetect2 collDetect2;
+	private CameraControll cameraControll;
 
 	void Start(){
 		collDetect = MonoBehaviour.FindObjectOfType<Edelweiss.DecalSystem.Example.collisionDetect>();
 		collDetect2 = MonoBehaviour.FindObjectOfType<Edelweiss.DecalSystem.Example.collisionDetect2>();
+		cameraControll = MonoBehaviour.FindObjectOfType<CameraControll>();
 	}
 
 	public void StartLevel(){
@@ -42,7 +44,14 @@ public class GameConttroller : MonoBehaviour {
 	}
 
 	public void SetPauseGame(bool isPause){
-		isPauseGame = isPause;
+		SetPauseMove(isPause);
+
+		if(isPause){
+			cameraControll.MoveToMenu();
+		} else {
+			cameraControll.MoveBack();
+		}
+
 	}
 
 	public void StartLoadLevel(int levelIndex){
@@ -115,13 +124,11 @@ public class GameConttroller : MonoBehaviour {
 		MovementController[] movementControllers = MonoBehaviour.FindObjectsOfType<MovementController> ();
 		
 		foreach (MovementController movementController in movementControllers) {			
-			
-			movementController.isPause = isPause;
-			
-		}
-		
-		characterControll.isPause = isPause;
 
+				movementController.isPause = isPause;
+					
+		}		
+		characterControll.isPause = isPause;
 	}
 
 	public void MoveBackward(){

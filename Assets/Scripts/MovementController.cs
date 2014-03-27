@@ -66,4 +66,13 @@ public class MovementController : MonoBehaviour
 				}
 	
 		}
+
+	public void Resume(){
+		isPause = false;
+	}
+
+	public void Pause(){
+		isPause = true;
+	}
+
 }

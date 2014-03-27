@@ -16,15 +16,17 @@ public class CharacterControll : MonoBehaviour
 		public float rotateSpeed = 3.5f;
 		private float backwardMoveTime = 0;
 		public Vector3 startPosition;
+		private float currentRotation;
 		private Vector3 deltaPosition;
 		private Vector3 backwardDeltaMove;
-		private Vector3 deltaRotation;
+		public Vector3 deltaRotation;
 		private Vector3 speedRotation;
 		private bool isBackwardMove = false;
 
 		void Start (){
 
-			startPosition = transform.position;
+			
+
 			speedRotation = new Vector3 (0, 0, rotateSpeed);			
 	
 			if (isUpMove) {
@@ -43,6 +45,7 @@ public class CharacterControll : MonoBehaviour
 		public void BackwardMove (float time)
 		{
 			backwardMoveTime = time;
+			currentRotation = transform.eulerAngles.z;
 
 			float angle = transform.eulerAngles.z + 180;
 		
@@ -54,11 +57,15 @@ public class CharacterControll : MonoBehaviour
 		
 			angle = angle - 180;	
 		
-			deltaRotation = new  Vector3 (0, 0, 7);
+			
 
-			float distance = Vector3.Distance (transform.position, startPosition);
+			float ds = Vector3.Distance (transform.position, startPosition);
+			Debug.Log("DS = " + ds);
+			float distance = (startPosition.y - transform.position.y);
+			Debug.Log("DS = " + distance);
 			backwardDeltaMove = new Vector3 (0, 0.2f, 0);
-		
+			deltaRotation = new  Vector3 (0, 0, currentRotation/distance*backwardDeltaMove.y);
+			
 			isBackwardMove = true;
 			redCircle.collider.enabled = false;
 			blueCircle.collider.enabled = false;
@@ -137,7 +144,7 @@ public class CharacterControll : MonoBehaviour
 	{
 		isPause = false;
 	}
-	
+
 }
 
 	

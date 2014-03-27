@@ -9,7 +9,7 @@ public class CameraControll : MonoBehaviour {
 	private Vector3 moveCamera;
 
 	public bool isMove = false;
-	private bool startGame = true;
+	public bool startGame = true;
 	private bool callMenu = false;
 	private bool moveBack = false;
 
@@ -52,6 +52,7 @@ public class CameraControll : MonoBehaviour {
 
 	public void MoveToMenu(){
 		callMenu = true;
+		startGame = false;
 	}
 
 	public void MoveBack(){

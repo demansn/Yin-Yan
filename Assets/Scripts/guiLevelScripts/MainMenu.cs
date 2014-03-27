@@ -7,16 +7,20 @@ public class MainMenu : MonoBehaviour {
 	private Vector3 oldPosition;
 	private Vector3 menuTransform;
 	private Vector3 moveSpeed;
+	private Vector3 moveToCamera;
+	private CameraControll cameraControll;
 	public GameConttroller gameController;
 
 	void Start () {
+		cameraControll = MonoBehaviour.FindObjectOfType<CameraControll>();
 		oldPosition = transform.position;
 		moveSpeed = new Vector3(0.1f,0,0);
 
 	}	
 
 	void Update () {
-
+		moveToCamera = new Vector3(transform.position.x,cameraControll.transform.position.y,transform.position.z);
+		transform.position = moveToCamera;
 		if(moveMenu){
 		
 			transform.position -= moveSpeed;
@@ -51,7 +55,7 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	void OnHid(){
-		gameController.MoveBackward();
+			//gameController.MoveBackward();		
 	}
 
 }
