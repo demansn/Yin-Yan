@@ -87,6 +87,7 @@ GameObject:
   - 65: {fileID: 35872022}
   - 114: {fileID: 35872021}
   - 96: {fileID: 35872020}
+  - 114: {fileID: 35872026}
   m_Layer: 9
   m_Name: TestBlock
   m_TagString: Block
@@ -209,6 +210,25 @@ Transform:
   m_LocalScale: {x: 3, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &35872026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: ab0a489fd7b85ac4391c772562725f75,
+    type: 2}
+  m_PrefabInternal: {fileID: 105830540}
+  m_GameObject: {fileID: 35872019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bffadc852054cfc9b7119041ac1e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decalsId: 1
+  m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
+  m_MaximumNumberOfProjectors: 10
+  m_DecalProjectorOffset: .5
+  m_DecalProjectorScale: {x: .200000003, y: 2, z: .200000003}
+  m_CullingAngle: 80
+  m_MeshOffset: 0
 --- !u!1001 &105830540
 Prefab:
   m_ObjectHideFlags: 0
@@ -785,6 +805,7 @@ GameObject:
   - 65: {fileID: 1521783234}
   - 114: {fileID: 1521783233}
   - 96: {fileID: 1521783232}
+  - 114: {fileID: 1521783238}
   m_Layer: 9
   m_Name: TestBlock
   m_TagString: Block
@@ -907,6 +928,25 @@ Transform:
   m_LocalScale: {x: 3, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1521783238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: ab0a489fd7b85ac4391c772562725f75,
+    type: 2}
+  m_PrefabInternal: {fileID: 657040038}
+  m_GameObject: {fileID: 1521783231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bffadc852054cfc9b7119041ac1e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decalsId: 1
+  m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
+  m_MaximumNumberOfProjectors: 10
+  m_DecalProjectorOffset: .5
+  m_DecalProjectorScale: {x: .200000003, y: 2, z: .200000003}
+  m_CullingAngle: 80
+  m_MeshOffset: 0
 --- !u!1001 &1712985445
 Prefab:
   m_ObjectHideFlags: 0
@@ -960,6 +1000,7 @@ GameObject:
   - 65: {fileID: 1747035176}
   - 114: {fileID: 1747035175}
   - 96: {fileID: 1747035174}
+  - 114: {fileID: 1747035180}
   m_Layer: 9
   m_Name: TestBlock
   m_TagString: Block
@@ -1082,6 +1123,25 @@ Transform:
   m_LocalScale: {x: 3, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1747035180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: ab0a489fd7b85ac4391c772562725f75,
+    type: 2}
+  m_PrefabInternal: {fileID: 201028060}
+  m_GameObject: {fileID: 1747035173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bffadc852054cfc9b7119041ac1e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decalsId: 1
+  m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
+  m_MaximumNumberOfProjectors: 10
+  m_DecalProjectorOffset: .5
+  m_DecalProjectorScale: {x: .200000003, y: 2, z: .200000003}
+  m_CullingAngle: 80
+  m_MeshOffset: 0
 --- !u!1 &2143821981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1155,7 @@ GameObject:
   - 65: {fileID: 2143821984}
   - 114: {fileID: 2143821983}
   - 96: {fileID: 2143821982}
+  - 114: {fileID: 2143821988}
   m_Layer: 9
   m_Name: TestBlock
   m_TagString: Block
@@ -1217,3 +1278,22 @@ Transform:
   m_LocalScale: {x: 2, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &2143821988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: ab0a489fd7b85ac4391c772562725f75,
+    type: 2}
+  m_PrefabInternal: {fileID: 1032422100}
+  m_GameObject: {fileID: 2143821981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bffadc852054cfc9b7119041ac1e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decalsId: 1
+  m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
+  m_MaximumNumberOfProjectors: 10
+  m_DecalProjectorOffset: .5
+  m_DecalProjectorScale: {x: .200000003, y: 2, z: .200000003}
+  m_CullingAngle: 80
+  m_MeshOffset: 0

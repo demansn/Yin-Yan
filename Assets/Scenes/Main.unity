@@ -119,13 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c7cb02c26db44ab998fac5f5da2fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decalsId: 1
   particlePrefab: {fileID: 100000, guid: b2d30e47617bb2d49bd198437b50c073, type: 2}
-  m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
-  m_MaximumNumberOfProjectors: 50
-  m_DecalProjectorOffset: .5
-  m_DecalProjectorScale: {x: 2, y: 2, z: 2}
-  m_CullingAngle: 80
-  m_MeshOffset: 2
 --- !u!54 &310741859
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1244,13 +1239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c7cb02c26db44ab998fac5f5da2fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decalsId: 2
   particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
-  m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
-  m_MaximumNumberOfProjectors: 50
-  m_DecalProjectorOffset: .5
-  m_DecalProjectorScale: {x: 2, y: 2, z: 2}
-  m_CullingAngle: 80
-  m_MeshOffset: 2
 --- !u!54 &1428241665
 Rigidbody:
   m_ObjectHideFlags: 0
