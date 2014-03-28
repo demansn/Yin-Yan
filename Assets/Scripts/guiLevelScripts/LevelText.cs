@@ -14,7 +14,6 @@ public class LevelText : MonoBehaviour {
 	void Start () {
 		colorAlpha.a = 0;
 		colorAlpha = new Color(1,1,1,colorAlpha.a);
-		PutText("Many men, meny \n meny meny meny men");
 	}
 
 	// Update is called once per frame

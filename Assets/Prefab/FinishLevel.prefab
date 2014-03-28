@@ -72,14 +72,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435933037635c46c8a77e39a1bd82624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1
+  rotateSpeed: 0
+  isLeftRotate: 0
   isUpMove: 0
-  backwardMoveSpeed: 0
-  backwardMoveTime: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  deltaPosition: {x: 0, y: 0, z: 0}
-  backwardDeltaMove: {x: 0, y: 0, z: 0}
-  isBackwardMove: 0
+  isRotate: 0
   isPause: 0
 --- !u!1001 &100100000
 Prefab:
