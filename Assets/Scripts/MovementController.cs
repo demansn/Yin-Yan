@@ -14,13 +14,17 @@ public class MovementController : MonoBehaviour
 
 	private float backwardMoveTime;
 	private Vector3 startPosition;
+	private Quaternion startRotation;
 	private Vector3 backwardDeltaMove;
+	private Vector3 backwardDeltaRotation;
 	private bool isBackwardMove = false;
+	public Vector3 angleCounter = Vector3.zero;
 
 		
 	void Start (){
 
 		startPosition = transform.position;
+		startRotation = transform.rotation;
 
 	}
 
@@ -28,8 +32,14 @@ public class MovementController : MonoBehaviour
 
 		isBackwardMove = true;
 		backwardMoveTime = time;
+
 		float distance = Vector3.Distance (transform.position, startPosition);
+		
+	
+		backwardDeltaRotation = new  Vector3 (0, 0, angleCounter.z   / (backwardMoveTime  / 0.02f));
 		backwardDeltaMove = new Vector3 (0, distance / (backwardMoveTime / 0.02f), 0);
+		
+		isBackwardMove = true;
 		
 	}
 
@@ -38,21 +48,21 @@ public class MovementController : MonoBehaviour
 		
 		if(!isPause && isBackwardMove){	
 			transform.position += backwardDeltaMove;
+			transform.Rotate(backwardDeltaRotation);
+
+			if (transform.position.y >= startPosition.y) {
+				isBackwardMove = false;
+				transform.localPosition = startPosition;
+				transform.rotation = startRotation;
+				angleCounter = Vector3.zero;
+			}
 		}
 		
 	}	
 
 	void Update (){
 		if (!isPause) {
-			if (isBackwardMove) {
-				
-				if (transform.localPosition.y >= startPosition.y) {
-						isBackwardMove = false;
-						transform.localPosition = startPosition;
-						Debug.Log(transform.position.y + " >= " + startPosition.y);
-				}
-
-			} else {
+			if (!isBackwardMove) {
 
 				Vector3 deltaPosition;
 
@@ -70,8 +80,10 @@ public class MovementController : MonoBehaviour
 
 					if(isLeftRotate){
 						deltaRotation = Vector3.forward * rotateSpeed;
+						angleCounter += Vector3.forward * rotateSpeed;
 					} else {
 						deltaRotation = Vector3.back * rotateSpeed;
+						angleCounter += Vector3.back * rotateSpeed;
 					}
 
 					transform.Rotate(deltaRotation);
