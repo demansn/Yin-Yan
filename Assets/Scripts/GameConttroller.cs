@@ -35,7 +35,8 @@ public class GameConttroller : MonoBehaviour {
 	}
 
 	public void SetPauseGame(bool isPause){
-		isPauseGame = isPause;
+		//isPauseGame = isPause;
+		characterControll.isPause = isPause;
 	}
 
 	public void StartLoadLevel(int levelIndex){

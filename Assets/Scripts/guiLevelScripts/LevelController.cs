@@ -31,7 +31,6 @@ public class LevelController : MonoBehaviour {
 		for(int j = 0; j < ld.Length; j++){
 			if(ld[j].id == i){
 				ld[j].SetActive();
-				Debug.Log("Level + " + j);
 				unlock = j;
 			}
 		}

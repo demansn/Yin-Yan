@@ -119,13 +119,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1f7ae6343ec75438e33aa9026bf96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewPos: {x: 0, y: 0, z: 0}
+  changePos: {x: 0, y: 0, z: 0}
+  collisionGameObject: {fileID: 0}
+  check: 0
   particlePrefab: {fileID: 100000, guid: b2d30e47617bb2d49bd198437b50c073, type: 2}
+  createdParticle: {fileID: 0}
+  cc: {fileID: 0}
+  gameController: {fileID: 0}
   m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
+  m_DecalsInstance: {fileID: 0}
+  m_WorldToDecalsMatrix:
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
   m_MaximumNumberOfProjectors: 10
   m_DecalProjectorOffset: .5
   m_DecalProjectorScale: {x: 1, y: 2, z: 1}
   m_CullingAngle: 80
   m_MeshOffset: 0
+  m_UVRectangleIndex: 0
 --- !u!54 &310741859
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -834,6 +860,7 @@ GameObject:
   - 124: {fileID: 878878096}
   - 81: {fileID: 878878095}
   - 114: {fileID: 878878094}
+  - 114: {fileID: 878878100}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -936,6 +963,17 @@ Transform:
   - {fileID: 1125369196}
   - {fileID: 861887275}
   m_Father: {fileID: 0}
+--- !u!114 &878878100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 878878092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410882ad51fa7c145ae3a04587c83294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &879037921
 Prefab:
   m_ObjectHideFlags: 0
@@ -1049,7 +1087,6 @@ MonoBehaviour:
   acceleration: 2
   rotateSpeed: 4
   startPosition: {x: 0, y: 0, z: 0}
-  deltaRotation: {x: 0, y: 0, z: 0}
 --- !u!95 &903615057
 Animator:
   serializedVersion: 2
@@ -1448,13 +1485,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6861b6175c3d8a44b1b90edfc655800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewPos: {x: 0, y: 0, z: 0}
+  changePos: {x: 0, y: 0, z: 0}
+  collisionGameObject: {fileID: 0}
+  check: 0
   particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
+  createdParticle: {fileID: 0}
+  cc: {fileID: 0}
+  gameController: {fileID: 0}
   m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
+  m_DecalsInstance: {fileID: 0}
+  m_WorldToDecalsMatrix:
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
   m_MaximumNumberOfProjectors: 10
   m_DecalProjectorOffset: .5
   m_DecalProjectorScale: {x: 1, y: 2, z: 1}
   m_CullingAngle: 80
   m_MeshOffset: 2
+  m_UVRectangleIndex: 0
 --- !u!54 &1428241665
 Rigidbody:
   m_ObjectHideFlags: 0

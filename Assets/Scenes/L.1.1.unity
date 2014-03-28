@@ -116,7 +116,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Time: .5
+  m_Time: .400000006
   m_StartWidth: 3
   m_EndWidth: 3
   m_Colors:
@@ -135,7 +135,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!114 &35872021
 MonoBehaviour:
@@ -209,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 35872019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.53683162, y: 34.3345413, z: -1}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &105830540
@@ -483,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 548685225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.51059067, y: 14.3345413, z: -1}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: .5, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &657040038
@@ -588,6 +588,10 @@ Prefab:
     - target: {fileID: 9600000, guid: ab0a489fd7b85ac4391c772562725f75, type: 2}
       propertyPath: m_MinVertexDistance
       value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ab0a489fd7b85ac4391c772562725f75, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab0a489fd7b85ac4391c772562725f75, type: 2}
@@ -839,7 +843,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Time: .5
+  m_Time: .400000006
   m_StartWidth: 3
   m_EndWidth: 3
   m_Colors:
@@ -858,7 +862,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!114 &1521783233
 MonoBehaviour:
@@ -932,7 +936,7 @@ Transform:
   m_GameObject: {fileID: 1521783231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.50695729, y: 24.3345413, z: -1}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &1712985445
@@ -1017,7 +1021,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Time: .5
+  m_Time: .400000006
   m_StartWidth: 3
   m_EndWidth: 3
   m_Colors:
@@ -1036,7 +1040,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!114 &1747035175
 MonoBehaviour:
@@ -1110,7 +1114,7 @@ Transform:
   m_GameObject: {fileID: 1747035173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.51438332, y: 34.3345413, z: -1}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &2143821981
@@ -1155,7 +1159,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Time: .5
+  m_Time: .400000006
   m_StartWidth: 2
   m_EndWidth: 2
   m_Colors:
@@ -1174,7 +1178,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
-  m_MinVertexDistance: .100000001
+  m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
 --- !u!114 &2143821983
 MonoBehaviour:
@@ -1248,6 +1252,6 @@ Transform:
   m_GameObject: {fileID: 2143821981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .00718784332, y: 43.8636742, z: -1}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
