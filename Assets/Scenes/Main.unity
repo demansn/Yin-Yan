@@ -88,7 +88,7 @@ GameObject:
   - 135: {fileID: 310741860}
   - 54: {fileID: 310741859}
   - 114: {fileID: 310741858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: blueCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decalsId: 1
   particlePrefab: {fileID: 100000, guid: b2d30e47617bb2d49bd198437b50c073, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &310741859
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,7 +208,7 @@ GameObject:
   - 33: {fileID: 327566250}
   - 23: {fileID: 327566249}
   - 95: {fileID: 327566248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LittleCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1075,7 @@ GameObject:
   - 114: {fileID: 903615056}
   - 65: {fileID: 903615060}
   - 54: {fileID: 903615061}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1483,7 +1486,7 @@ GameObject:
   - 135: {fileID: 1428241666}
   - 54: {fileID: 1428241665}
   - 114: {fileID: 1428241664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: redCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,6 +1518,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decalsId: 2
   particlePrefab: {fileID: 100000, guid: e5ce614425d3bd7459b530124b496a96, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &1428241665
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2144,7 +2150,7 @@ GameObject:
   - 23: {fileID: 1858203757}
   - 95: {fileID: 1858203756}
   - 96: {fileID: 1858203755}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2308,7 +2314,7 @@ GameObject:
   - 23: {fileID: 2069337755}
   - 95: {fileID: 2069337754}
   - 96: {fileID: 2069337753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
