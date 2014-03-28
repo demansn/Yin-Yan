@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435933037635c46c8a77e39a1bd82624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
   rotateSpeed: 0
   isLeftRotate: 0
   isUpMove: 0
@@ -104,7 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decalsListA: 0100000002000000030000000400000000000000
   decalsListB: 0500000006000000070000000800000009000000
-  decalsId: 1
   m_DecalsPrefab: {fileID: 11400004, guid: b8b2aeb50009c4c6da5f11879b546c9e, type: 2}
   m_MaximumNumberOfProjectors: 5
   m_DecalProjectorOffset: .5

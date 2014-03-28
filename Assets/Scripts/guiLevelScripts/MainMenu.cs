@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour {
 	void Start () {
 		cameraControll = MonoBehaviour.FindObjectOfType<CameraControll>();
 		oldPosition = transform.position;
-		moveSpeed = new Vector3(0.1f,0,0);
+		moveSpeed = new Vector3(0.15f,0,0);
 
 	}	
 

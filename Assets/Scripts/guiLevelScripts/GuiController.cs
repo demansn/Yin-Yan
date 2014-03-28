@@ -98,7 +98,7 @@ public class GuiController : MonoBehaviour {
 	}
 
 	public void ResumeGame(){
-		pauseButton.Enable();
+		pauseButton.Invoke("Enable",1f);
 		mainMenu.MenuOut();
 		cameraControll.MoveBack();
 		cameraControll.Invoke("StartGame",1f);
