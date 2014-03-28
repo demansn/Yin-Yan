@@ -15,7 +15,6 @@ namespace Edelweiss.DecalSystem.Example {
 		private int m_UVRectangleIndexA = 0;
 		private int m_UVRectangleIndexB = 0;
 		private int currentDecalsGrooupID = 0;
-		[SerializeField] public int decalsId = 0;
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
 		[SerializeField] private DS_Decals m_DecalsPrefab = null;
 		

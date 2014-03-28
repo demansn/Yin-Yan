@@ -424,6 +424,30 @@ Prefab:
       propertyPath: m_Colors.m_Color[0].rgba
       value: 4294881596
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
     - {fileID: 11400002, guid: 9970b6cd35d7ec4419af51ea0a3b8255, type: 2}
