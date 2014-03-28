@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class LevelText : MonoBehaviour {
-
-	private GUIText testText;
+	
 	private Color colorAlpha;
 	private string levelText;
+
+	public GUIStyle customText;
 
 	private bool beginLerp = false;
 	private bool endLerp = false;
@@ -13,7 +14,7 @@ public class LevelText : MonoBehaviour {
 	void Start () {
 		colorAlpha.a = 0;
 		colorAlpha = new Color(1,1,1,colorAlpha.a);
-		PutText("LOWARA");
+		PutText("Many men, meny \n meny meny meny men");
 	}
 
 	// Update is called once per frame
@@ -35,7 +36,8 @@ public class LevelText : MonoBehaviour {
 
 
 		GUI.color = colorAlpha;
-		GUI.Label(new Rect(Screen.currentResolution.width*30/100,Screen.currentResolution.height*30/100,Screen.currentResolution.width*40/100,Screen.currentResolution.width*20/100), levelText);	
+		customText.fontSize = Screen.currentResolution.width *5 / 100;
+		GUI.Label(new Rect(0,Screen.currentResolution.height*35/100,Screen.currentResolution.width,50), levelText, customText);	
 	}
 
 	public void PutText(string text){
