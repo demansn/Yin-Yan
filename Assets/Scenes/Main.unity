@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f68cf3fa0845c408f5ab6441f987b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  escape: 1
 --- !u!1 &534528327
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 903615054}
   isMove: 0
+  startGame: 1
 --- !u!81 &878878095
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1726,6 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad08f9419619224c9ee42be49525510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstStart: 0
 --- !u!23 &1752213354
 Renderer:
   m_ObjectHideFlags: 0
