@@ -13,7 +13,6 @@ GameObject:
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400000}
   - 96: {fileID: 9600000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400008}
   m_Layer: 9
@@ -133,24 +132,7 @@ MonoBehaviour:
   isUpMove: 0
   isRotate: 0
   isPause: 1
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79bffadc852054cfc9b7119041ac1e26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decalsId: 1
-  m_DecalsPrefab: {fileID: 11400004, guid: afacc170b56dbeb449517a21b9dc3570, type: 2}
-  m_MaximumNumberOfProjectors: 10
-  m_DecalProjectorOffset: .5
-  m_DecalProjectorScale: {x: 1, y: 2, z: 1}
-  m_CullingAngle: 80
-  m_MeshOffset: 0
+  angleCounter: {x: 0, y: 0, z: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,8 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bffadc852054cfc9b7119041ac1e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decalsListA: 0000000001000000020000000300000004000000
+  decalsListB: 0500000006000000070000000800000009000000
   decalsId: 2
-  m_DecalsPrefab: {fileID: 11400004, guid: a1b8057c5cb18f34198f934a6678580b, type: 2}
+  m_DecalsPrefab: {fileID: 11400004, guid: b8b2aeb50009c4c6da5f11879b546c9e, type: 2}
   m_MaximumNumberOfProjectors: 10
   m_DecalProjectorOffset: .5
   m_DecalProjectorScale: {x: 1, y: 2, z: 1}

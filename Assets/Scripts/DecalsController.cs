@@ -9,6 +9,12 @@ namespace Edelweiss.DecalSystem.Example {
 	
 	public class DecalsController : MonoBehaviour {
 
+
+		[SerializeField] public int [] decalsListA;
+		[SerializeField] public int [] decalsListB;
+		private int m_UVRectangleIndexA = 0;
+		private int m_UVRectangleIndexB = 0;
+		private int currentDecalsGrooupID = 0;
 		[SerializeField] public int decalsId = 0;
 		// The prefab with the ready to use DS_Decals. The material and uv rectangles are set up.
 		[SerializeField] private DS_Decals m_DecalsPrefab = null;
@@ -35,18 +41,26 @@ namespace Edelweiss.DecalSystem.Example {
 		[SerializeField] private Vector3 m_DecalProjectorScale = new Vector3 (0.2f, 2.0f, 0.2f);
 		[SerializeField] private float m_CullingAngle = 80.0f;
 		[SerializeField] private float m_MeshOffset = 0.0f;
-		
-		// We iterate through all the defined uv rectangles. This one inicates which index we are using at
-		// the moment.
-		private int m_UVRectangleIndex = 0;
-		
-		// Move on to the next uv rectangle index. We call this method after each projection. In practice
-		// you certainly don't do that, but pick an appropriate one depending on the surface that was hit.
-		private void NextUVRectangleIndex () {
-			m_UVRectangleIndex = m_UVRectangleIndex + 1;
-			if (m_UVRectangleIndex >= m_DecalsInstance.CurrentUvRectangles.Length) {
-				m_UVRectangleIndex = 0;
+
+		private int m_UVRectangleIndex = 0;	
+
+		private void NextUVRectangleIndexA () {
+			m_UVRectangleIndexA = m_UVRectangleIndexA + 1;
+			if (m_UVRectangleIndexA >= decalsListA.Length) {
+				m_UVRectangleIndexA = 0;
 			}
+
+			m_UVRectangleIndex = decalsListA[m_UVRectangleIndexA];
+		}
+
+		private void NextUVRectangleIndexB () {
+			m_UVRectangleIndexB = m_UVRectangleIndexB + 1;
+			if (m_UVRectangleIndexB >= decalsListB.Length) {
+				m_UVRectangleIndexB = 0;
+
+			}	
+
+			m_UVRectangleIndex = decalsListB[m_UVRectangleIndexB];
 		}
 		
 		private void Start () {
@@ -69,7 +83,7 @@ namespace Edelweiss.DecalSystem.Example {
 			}
 		}
 		
-		public void AddDecalProjector (Ray a_Ray, RaycastHit a_RaycastHit) {
+		public void AddDecalProjector (Ray a_Ray, RaycastHit a_RaycastHit, Vector3 contactPoint, int decalsGroupID) {
 			
 			// Make sure there are not too many projectors.
 			if (m_DecalProjectors.Count >= m_MaximumNumberOfProjectors) {
@@ -82,13 +96,12 @@ namespace Edelweiss.DecalSystem.Example {
 			}
 			
 			// Calculate the position and rotation for the new decal projector.
-			Vector3 l_ProjectorPosition = a_RaycastHit.point - (m_DecalProjectorOffset * a_Ray.direction.normalized);
+			Vector3 l_ProjectorPosition = contactPoint - (m_DecalProjectorOffset * a_Ray.direction.normalized);
 			Quaternion l_ProjectorRotation = ProjectorRotationUtility.ProjectorRotation (Camera.main.transform.forward, Vector3.up);
 			
 			// Randomize the rotation.
 			Quaternion l_RandomRotation = Quaternion.Euler (0.0f, Random.Range (0.0f, 360.0f), 0.0f);
-			l_ProjectorRotation = l_ProjectorRotation * l_RandomRotation;		
-			
+			l_ProjectorRotation = l_ProjectorRotation * l_RandomRotation;	
 			
 			// We hit a collider. Next we have to find the mesh that belongs to the collider.
 			// That step depends on how you set up your mesh filters and collider relative to
@@ -111,10 +124,16 @@ namespace Edelweiss.DecalSystem.Example {
 				}
 				
 				if (l_Mesh != null) {
-					
+
+					if(decalsGroupID == 1){
+						NextUVRectangleIndexA();
+					} else {
+						NextUVRectangleIndexB();
+					}
+
 					// Create the decal projector.
 					DecalProjector l_DecalProjector = new DecalProjector (l_ProjectorPosition, l_ProjectorRotation, m_DecalProjectorScale, m_CullingAngle, m_MeshOffset, m_UVRectangleIndex, m_UVRectangleIndex);
-					
+				
 					// Add the projector to our list and the decals mesh, such that both are
 					// synchronized. All the mesh data that is now added to the decals mesh
 					// will belong to this projector.
@@ -133,8 +152,7 @@ namespace Edelweiss.DecalSystem.Example {
 					// The changes are only present in the decals mesh at the moment. We have
 					// to pass them to the decals instance to visualize them.
 					m_DecalsInstance.UpdateDecalsMeshes (m_DecalsMesh);
-					
-					NextUVRectangleIndex ();
+
 				}
 			}
 		}
